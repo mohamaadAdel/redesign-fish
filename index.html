@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="theme-color" content="#0a0e27">
-    <title>Constellation of Love 💫</title>
+    <title>Heart of Love 💕</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -27,6 +27,8 @@
             --accent-purple: #6c5ce7;
             --accent-pink: #fd79a8;
             --accent-gold: #fdcb6e;
+            --heart-red: #ff4757;
+            --heart-pink: #ff6b9d;
             --text-light: #dfe6e9;
             --text-dim: #b2bec3;
             --white: #ffffff;
@@ -135,7 +137,7 @@
 
         /* Header */
         .header {
-            padding: 20px;
+            padding: 15px 20px;
             text-align: center;
             background: rgba(10, 14, 39, 0.8);
             backdrop-filter: blur(10px);
@@ -145,24 +147,30 @@
 
         .title {
             font-family: 'Cinzel', serif;
-            font-size: clamp(1.5rem, 6vw, 2rem);
+            font-size: clamp(1.3rem, 5vw, 1.6rem);
             font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-pink));
+            background: linear-gradient(135deg, var(--heart-red), var(--heart-pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 5px;
+            margin-bottom: 3px;
             letter-spacing: 1px;
         }
 
         .subtitle {
-            font-size: clamp(0.8rem, 3vw, 0.9rem);
+            font-size: clamp(0.7rem, 2.5vw, 0.8rem);
             color: var(--text-dim);
             font-weight: 300;
             letter-spacing: 0.5px;
         }
 
-        /* Constellation map */
+        .heart-symbol {
+            font-size: 1.2rem;
+            margin: 3px 0;
+            color: var(--heart-red);
+        }
+
+        /* Heart constellation map */
         .constellation-map {
             flex: 1;
             position: relative;
@@ -170,55 +178,61 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 10px;
         }
 
-        /* Message stars */
-        .message-star {
+        /* Heart container */
+        .heart-container {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+            height: 450px;
+        }
+
+        /* Message emojis */
+        .message-emoji {
             position: absolute;
-            width: 60px;
-            height: 60px;
+            width: 32px;
+            height: 32px;
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 10;
-        }
-
-        .message-star-inner {
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, var(--accent-gold) 0%, var(--accent-pink) 50%, transparent 70%);
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            box-shadow: 0 0 20px rgba(253, 203, 110, 0.6);
-            animation: pulse 2s infinite;
+            font-size: 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 71, 87, 0.2);
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        .message-emoji.revealed {
+            background: rgba(255, 71, 87, 0.15);
+            border-color: var(--heart-red);
+            transform: scale(1.15);
+            box-shadow: 0 0 15px rgba(255, 71, 87, 0.6);
+            animation: heartbeat 1s ease-in-out;
         }
 
-        .message-star.revealed .message-star-inner {
-            background: radial-gradient(circle, var(--accent-blue) 0%, var(--accent-purple) 50%, transparent 70%);
-            box-shadow: 0 0 30px rgba(108, 92, 231, 0.8);
+        @keyframes heartbeat {
+            0% { transform: scale(1.15); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1.15); }
         }
 
-        /* Constellation lines */
-        .constellation-line {
+        /* Heart lines */
+        .heart-line {
             position: absolute;
             height: 1px;
-            background: linear-gradient(to right, transparent, rgba(253, 203, 110, 0.5), transparent);
+            background: linear-gradient(to right, transparent, rgba(255, 71, 87, 0.3), transparent);
             transform-origin: left center;
             z-index: 5;
             opacity: 0;
             transition: opacity 0.5s ease;
         }
 
-        .constellation-line.visible {
+        .heart-line.visible {
             opacity: 1;
         }
 
@@ -247,10 +261,10 @@
 
         .message-content {
             background: rgba(26, 31, 58, 0.9);
-            border: 1px solid rgba(253, 203, 110, 0.3);
+            border: 1px solid rgba(255, 71, 87, 0.3);
             border-radius: 20px;
-            padding: 30px;
-            max-width: 400px;
+            padding: 25px;
+            max-width: 380px;
             width: 100%;
             text-align: center;
             position: relative;
@@ -259,41 +273,41 @@
 
         .message-number {
             position: absolute;
-            top: -15px;
+            top: -12px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-pink));
+            background: linear-gradient(135deg, var(--heart-red), var(--heart-pink));
             color: white;
-            width: 30px;
-            height: 30px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .message-text {
-            font-size: 1.1rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.5;
             color: var(--text-light);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .close-message {
             background: none;
-            border: 1px solid var(--accent-pink);
-            color: var(--accent-pink);
+            border: 1px solid var(--heart-red);
+            color: var(--heart-red);
             padding: 8px 20px;
             border-radius: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .close-message:active {
-            background: var(--accent-pink);
+            background: var(--heart-red);
             color: white;
         }
 
@@ -305,7 +319,7 @@
             right: 0;
             background: rgba(10, 14, 39, 0.9);
             backdrop-filter: blur(20px);
-            padding: 15px 20px calc(15px + env(safe-area-inset-bottom, 0));
+            padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0));
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -317,43 +331,43 @@
             background: none;
             border: none;
             color: var(--text-dim);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            padding: 8px;
+            padding: 6px;
         }
 
         .nav-button:active {
-            color: var(--accent-gold);
+            color: var(--heart-red);
             transform: scale(0.9);
         }
 
         .progress-indicator {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .progress-text {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--text-dim);
         }
 
         .progress-dots {
             display: flex;
-            gap: 5px;
+            gap: 4px;
         }
 
         .progress-dot {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
         }
 
         .progress-dot.revealed {
-            background: var(--accent-gold);
+            background: var(--heart-red);
             transform: scale(1.2);
         }
 
@@ -361,32 +375,32 @@
         .music-player {
             position: fixed;
             top: calc(80px + env(safe-area-inset-top, 0));
-            right: 20px;
+            right: 15px;
             background: rgba(26, 31, 58, 0.9);
             backdrop-filter: blur(20px);
-            padding: 12px;
-            border-radius: 30px;
+            padding: 10px;
+            border-radius: 25px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             z-index: 150;
-            border: 1px solid rgba(253, 203, 110, 0.2);
+            border: 1px solid rgba(255, 71, 87, 0.2);
         }
 
         .music-btn {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             border: none;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            background: linear-gradient(135deg, var(--heart-red), var(--heart-pink));
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
         }
 
         .music-btn:active {
@@ -397,11 +411,11 @@
             display: none;
             flex-direction: column;
             min-width: 0;
-            max-width: 100px;
+            max-width: 80px;
         }
 
         .music-title {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: var(--text-light);
             font-weight: 500;
             white-space: nowrap;
@@ -410,11 +424,11 @@
         }
 
         .music-status {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             color: var(--text-dim);
         }
 
-        /* Constellation complete modal */
+        /* Complete modal */
         .complete-modal {
             position: fixed;
             top: 0;
@@ -441,12 +455,12 @@
 
         .complete-content {
             text-align: center;
-            max-width: 400px;
+            max-width: 380px;
         }
 
         .complete-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
             animation: float 3s ease-in-out infinite;
         }
 
@@ -457,31 +471,31 @@
 
         .complete-title {
             font-family: 'Cinzel', serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-gold), var(--accent-pink));
+            background: linear-gradient(135deg, var(--heart-red), var(--heart-pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .complete-message {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-light);
-            line-height: 1.6;
-            margin-bottom: 25px;
+            line-height: 1.5;
+            margin-bottom: 20px;
         }
 
         .complete-button {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            background: linear-gradient(135deg, var(--heart-red), var(--heart-pink));
             border: none;
             color: white;
-            padding: 12px 30px;
+            padding: 10px 25px;
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 500;
         }
 
@@ -497,7 +511,7 @@
             transform: translate(-50%, -50%);
             text-align: center;
             color: var(--text-dim);
-            font-size: 1rem;
+            font-size: 0.9rem;
             z-index: 5;
             pointer-events: none;
             animation: fadeInOut 4s ease-in-out infinite;
@@ -512,7 +526,7 @@
         .touch-ripple {
             position: fixed;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(253, 203, 110, 0.4), transparent);
+            background: radial-gradient(circle, rgba(255, 71, 87, 0.4), transparent);
             pointer-events: none;
             transform: translate(-50%, -50%);
             animation: ripple 0.6s ease-out;
@@ -526,8 +540,8 @@
                 opacity: 1;
             }
             to {
-                width: 80px;
-                height: 80px;
+                width: 60px;
+                height: 60px;
                 opacity: 0;
             }
         }
@@ -538,9 +552,15 @@
                 display: flex;
             }
             
-            .message-star {
-                width: 70px;
-                height: 70px;
+            .message-emoji {
+                width: 36px;
+                height: 36px;
+                font-size: 1.4rem;
+            }
+            
+            .heart-container {
+                max-width: 500px;
+                height: 500px;
             }
         }
 
@@ -550,6 +570,12 @@
             }
             
             .message-text {
+                font-size: 0.9rem;
+            }
+            
+            .message-emoji {
+                width: 28px;
+                height: 28px;
                 font-size: 1rem;
             }
         }
@@ -583,14 +609,19 @@
     <div class="app-container">
         <!-- Header -->
         <header class="header">
-            <h1 class="title">Constellation of Love</h1>
-            <p class="subtitle">Each star holds a message for you 💫</p>
+            <h1 class="title">Heart of Love</h1>
+            <div class="heart-symbol">💕</div>
+            <p class="subtitle">Each emoji holds a piece of my heart for you</p>
         </header>
 
-        <!-- Constellation map -->
+        <!-- Heart constellation map -->
         <main class="constellation-map" id="constellationMap">
             <div class="instructions" id="instructions">
-                <div>🌟 Tap the stars to reveal your messages</div>
+                <div>💕 Tap the emojis to reveal your messages</div>
+            </div>
+            
+            <div class="heart-container" id="heartContainer">
+                <!-- Heart shape will be created here -->
             </div>
         </main>
 
@@ -639,10 +670,10 @@
         <!-- Complete modal -->
         <div class="complete-modal" id="completeModal">
             <div class="complete-content">
-                <div class="complete-icon">🌌</div>
-                <h2 class="complete-title">Your Love Constellation</h2>
-                <p class="complete-message">You've discovered all the stars in our universe. Each one shining with my love for you.</p>
-                <p class="complete-message">I love you, Fish. Now and forever. 💫</p>
+                <div class="complete-icon">💕</div>
+                <h2 class="complete-title">Our Complete Heart</h2>
+                <p class="complete-message">You've unlocked every piece of my heart. Each emoji represents a different feeling I have for you, all coming together to form the love I feel.</p>
+                <p class="complete-message">I love you, Fish. Now and forever. 💕</p>
                 <button class="complete-button" id="completeButton">View Again</button>
             </div>
         </div>
@@ -727,7 +758,8 @@
             "You are the deity upon which I meditate and devote my life to."
         ];
 
-        const starIcons = ['⭐', '✨', '💫', '🌟', '⚡', '🌠', '💥', '✦'];
+        // Only use the specified emojis
+        const heartEmojis = ['😔', '💕', '🥵', '🥀', '💗', '😿', '♥️', '❤️‍🩹', '🫦', '😘'];
         const songFiles = ['song.mp3', 'song2.mp3', 'song3.mp3', 'song4.mp3', 'song5.mp3', 'song6.mp3', 'song7.mp3'];
         const songTitles = ['Our First Song', 'Our Second Song', 'Our Third Song', 'Our Fourth Song', 'Our Fifth Song', 'Our Sixth Song', 'Our Seventh Song'];
 
@@ -736,18 +768,18 @@
             currentSong: 0,
             isPlaying: false,
             userInteracted: false,
-            revealedStars: new Set(),
+            revealedEmojis: new Set(),
             autoPlaying: false,
             audioElements: [],
-            starPositions: [],
-            constellationLines: []
+            emojiPositions: [],
+            heartLines: []
         };
 
         // Initialize app
         function init() {
             createAudioElements();
             createStarryBackground();
-            createConstellation();
+            createDetailedHeart();
             setupEventListeners();
             createProgressDots();
             setupTouchOptimizations();
@@ -778,10 +810,10 @@
             const universe = document.querySelector('.universe');
             
             // Create background stars
-            for (let i = 0; i < 200; i++) {
+            for (let i = 0; i < 150; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
-                star.style.width = `${Math.random() * 3}px`;
+                star.style.width = `${Math.random() * 2.5}px`;
                 star.style.height = star.style.width;
                 star.style.left = `${Math.random() * 100}%`;
                 star.style.top = `${Math.random() * 100}%`;
@@ -800,84 +832,121 @@
                     
                     setTimeout(() => shootingStar.remove(), 3000);
                 }
-            }, 3000);
+            }, 4000);
         }
 
-        // Create constellation
-        function createConstellation() {
-            const map = document.getElementById('constellationMap');
-            const mapRect = map.getBoundingClientRect();
-            const messageCount = Math.min(letterContent.length, 20); // Limit to 20 stars for performance
+        // Create detailed heart shape with many emojis
+        function createDetailedHeart() {
+            const container = document.getElementById('heartContainer');
+            const containerRect = container.getBoundingClientRect();
+            const centerX = containerRect.width / 2;
+            const centerY = containerRect.height / 2;
+            const scale = Math.min(centerX, centerY) * 0.8;
             
-            // Generate star positions in a constellation pattern
-            const centerX = mapRect.width / 2;
-            const centerY = mapRect.height / 2;
-            const radius = Math.min(centerX, centerY) * 0.7;
+            // Create a very detailed heart shape with many points
+            const heartPoints = [];
+            const layers = 5; // Multiple layers for density
+            const pointsPerLayer = 20;
             
-            for (let i = 0; i < messageCount; i++) {
-                const angle = (i / messageCount) * Math.PI * 2;
-                const r = radius * (0.5 + Math.random() * 0.5);
-                const x = centerX + Math.cos(angle) * r;
-                const y = centerY + Math.sin(angle) * r;
+            for (let layer = 0; layer < layers; layer++) {
+                const layerScale = 1 - (layer * 0.15); // Each layer slightly smaller
                 
-                app.starPositions.push({ x, y, index: i });
+                for (let i = 0; i < pointsPerLayer; i++) {
+                    const t = (i / pointsPerLayer) * 2 * Math.PI;
+                    
+                    // Heart curve equation
+                    const x = 16 * Math.pow(Math.sin(t), 3);
+                    const y = -(13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t));
+                    
+                    // Add some randomness for organic feel
+                    const randomOffset = 5;
+                    const offsetX = (Math.random() - 0.5) * randomOffset;
+                    const offsetY = (Math.random() - 0.5) * randomOffset;
+                    
+                    // Scale and position
+                    const posX = centerX + (x * scale * 0.04 * layerScale) + offsetX;
+                    const posY = centerY + (y * scale * 0.04 * layerScale) + offsetY;
+                    
+                    // Only add points within heart bounds
+                    const distanceFromCenter = Math.sqrt(Math.pow(posX - centerX, 2) + Math.pow(posY - centerY, 2));
+                    if (distanceFromCenter < scale * 0.8) {
+                        heartPoints.push({ x: posX, y: posY, index: heartPoints.length });
+                    }
+                }
+            }
+            
+            // Add center cluster for more density
+            for (let i = 0; i < 15; i++) {
+                const angle = (i / 15) * 2 * Math.PI;
+                const radius = Math.random() * scale * 0.2;
+                const posX = centerX + Math.cos(angle) * radius;
+                const posY = centerY + Math.sin(angle) * radius;
                 
-                // Create star element
-                const star = document.createElement('div');
-                star.className = 'message-star gpu-accelerated';
-                star.style.left = `${x - 30}px`;
-                star.style.top = `${y - 30}px`;
-                star.dataset.index = i;
+                heartPoints.push({ x: posX, y: posY, index: heartPoints.length });
+            }
+            
+            // Create emoji elements for each point
+            const totalPoints = Math.min(letterContent.length, heartPoints.length);
+            
+            for (let i = 0; i < totalPoints; i++) {
+                const point = heartPoints[i];
+                app.emojiPositions.push({ x: point.x, y: point.y, index: i });
                 
-                const starInner = document.createElement('div');
-                starInner.className = 'message-star-inner';
-                starInner.textContent = starIcons[i % starIcons.length];
+                // Create emoji element
+                const emoji = document.createElement('div');
+                emoji.className = 'message-emoji gpu-accelerated';
+                emoji.style.left = `${point.x - 16}px`;
+                emoji.style.top = `${point.y - 16}px`;
+                emoji.dataset.index = i;
                 
-                star.appendChild(starInner);
-                map.appendChild(star);
+                // Use the specified emojis in order, repeating as needed
+                const emojiChar = heartEmojis[i % heartEmojis.length];
+                emoji.textContent = emojiChar;
+                
+                container.appendChild(emoji);
                 
                 // Add click event
-                star.addEventListener('click', () => revealMessage(i));
-                star.addEventListener('touchend', (e) => {
+                emoji.addEventListener('click', () => revealMessage(i));
+                emoji.addEventListener('touchend', (e) => {
                     e.preventDefault();
                     revealMessage(i);
                 });
             }
             
-            // Create constellation lines
-            createConstellationLines();
+            // Create heart lines connecting nearby emojis
+            createHeartLines();
         }
 
-        // Create constellation lines
-        function createConstellationLines() {
-            const map = document.getElementById('constellationMap');
+        // Create heart lines
+        function createHeartLines() {
+            const container = document.getElementById('heartContainer');
             
-            // Connect nearby stars to form constellation
-            for (let i = 0; i < app.starPositions.length; i++) {
-                for (let j = i + 1; j < app.starPositions.length; j++) {
-                    const star1 = app.starPositions[i];
-                    const star2 = app.starPositions[j];
+            // Connect nearby emojis to form heart shape
+            for (let i = 0; i < app.emojiPositions.length; i++) {
+                for (let j = i + 1; j < app.emojiPositions.length; j++) {
+                    const emoji1 = app.emojiPositions[i];
+                    const emoji2 = app.emojiPositions[j];
                     const distance = Math.sqrt(
-                        Math.pow(star2.x - star1.x, 2) + 
-                        Math.pow(star2.y - star1.y, 2)
+                        Math.pow(emoji2.x - emoji1.x, 2) + 
+                        Math.pow(emoji2.y - emoji1.y, 2)
                     );
                     
-                    // Connect stars that are close enough
-                    if (distance < 150 && Math.random() > 0.5) {
+                    // Connect emojis that are close enough
+                    if (distance < 60 && Math.random() > 0.4) {
                         const line = document.createElement('div');
-                        line.className = 'constellation-line';
-                        line.dataset.stars = `${i}-${j}`;
+                        line.className = 'heart-line';
+                        line.dataset.emojis = `${i}-${j}`;
                         
-                        const angle = Math.atan2(star2.y - star1.y, star2.x - star1.x);
+                        const angle = Math.atan2(emoji2.y - emoji1.y, emoji2.x - emoji1.x);
                         const length = distance;
                         
                         line.style.width = `${length}px`;
-                        line.style.left = `${star1.x}px`;
-                        line.style.top = `${star1.y}px`;
+                        line.style.left = `${emoji1.x}px`;
+                        line.style.top = `${emoji1.y}px`;
                         line.style.transform = `rotate(${angle}rad)`;
                         
-                        map.appendChild(line);
-                        app.constellationLines.push(line);
+                        container.appendChild(line);
+                        app.heartLines.push(line);
                     }
                 }
             }
@@ -885,18 +954,18 @@
 
         // Reveal message
         function revealMessage(index) {
-            if (app.revealedStars.has(index)) return;
+            if (app.revealedEmojis.has(index)) return;
             
-            app.revealedStars.add(index);
+            app.revealedEmojis.add(index);
             
-            // Update star appearance
-            const star = document.querySelector(`.message-star[data-index="${index}"]`);
-            star.classList.add('revealed');
+            // Update emoji appearance
+            const emoji = document.querySelector(`.message-emoji[data-index="${index}"]`);
+            emoji.classList.add('revealed');
             
-            // Show constellation lines connected to this star
-            app.constellationLines.forEach(line => {
-                const stars = line.dataset.stars.split('-').map(Number);
-                if (stars.includes(index)) {
+            // Show heart lines connected to this emoji
+            app.heartLines.forEach(line => {
+                const emojis = line.dataset.emojis.split('-').map(Number);
+                if (emojis.includes(index)) {
                     line.classList.add('visible');
                 }
             });
@@ -914,26 +983,26 @@
             // Update progress
             updateProgress();
             
-            // Hide instructions after first star
-            if (app.revealedStars.size === 1) {
+            // Hide instructions after first emoji
+            if (app.revealedEmojis.size === 1) {
                 document.getElementById('instructions').style.display = 'none';
             }
             
-            // Check if all stars are revealed
-            if (app.revealedStars.size === Math.min(letterContent.length, 20)) {
+            // Check if all emojis are revealed
+            if (app.revealedEmojis.size === Math.min(letterContent.length, app.emojiPositions.length)) {
                 setTimeout(showCompleteModal, 1000);
             }
             
             // Haptic feedback
             if (navigator.vibrate) {
-                navigator.vibrate(50);
+                navigator.vibrate(30);
             }
         }
 
         // Update progress
         function updateProgress() {
-            const total = Math.min(letterContent.length, 20);
-            const revealed = app.revealedStars.size;
+            const total = Math.min(letterContent.length, app.emojiPositions.length);
+            const revealed = app.revealedEmojis.size;
             
             document.getElementById('progressText').textContent = `${revealed} revealed`;
             
@@ -946,7 +1015,7 @@
         // Create progress dots
         function createProgressDots() {
             const container = document.getElementById('progressDots');
-            const total = Math.min(letterContent.length, 20);
+            const total = Math.min(letterContent.length, app.emojiPositions.length);
             
             for (let i = 0; i < total; i++) {
                 const dot = document.createElement('div');
@@ -967,7 +1036,7 @@
         function createCelebration() {
             const universe = document.querySelector('.universe');
             
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 40; i++) {
                 setTimeout(() => {
                     const star = document.createElement('div');
                     star.className = 'shooting-star';
@@ -977,7 +1046,7 @@
                     universe.appendChild(star);
                     
                     setTimeout(() => star.remove(), 3000);
-                }, i * 100);
+                }, i * 50);
             }
         }
 
@@ -991,11 +1060,11 @@
             // Complete modal
             document.getElementById('completeButton').addEventListener('click', () => {
                 document.getElementById('completeModal').classList.remove('show');
-                resetConstellation();
+                resetHeart();
             });
             
             // Navigation buttons
-            document.getElementById('resetBtn').addEventListener('click', resetConstellation);
+            document.getElementById('resetBtn').addEventListener('click', resetHeart);
             document.getElementById('autoPlayBtn').addEventListener('click', toggleAutoPlay);
             
             // Music controls
@@ -1007,18 +1076,18 @@
             document.addEventListener('visibilitychange', handleVisibilityChange);
         }
 
-        // Reset constellation
-        function resetConstellation() {
-            app.revealedStars.clear();
+        // Reset heart
+        function resetHeart() {
+            app.revealedEmojis.clear();
             app.autoPlaying = false;
             
-            // Reset stars
-            document.querySelectorAll('.message-star').forEach(star => {
-                star.classList.remove('revealed');
+            // Reset emojis
+            document.querySelectorAll('.message-emoji').forEach(emoji => {
+                emoji.classList.remove('revealed');
             });
             
-            // Reset constellation lines
-            app.constellationLines.forEach(line => {
+            // Reset heart lines
+            app.heartLines.forEach(line => {
                 line.classList.remove('visible');
             });
             
@@ -1045,17 +1114,17 @@
             }
         }
 
-        // Auto reveal next star
+        // Auto reveal next emoji
         function autoRevealNext() {
             if (!app.autoPlaying) return;
             
-            const total = Math.min(letterContent.length, 20);
+            const total = Math.min(letterContent.length, app.emojiPositions.length);
             const nextIndex = Array.from({length: total}, (_, i) => i)
-                .find(i => !app.revealedStars.has(i));
+                .find(i => !app.revealedEmojis.has(i));
             
             if (nextIndex !== undefined) {
                 revealMessage(nextIndex);
-                setTimeout(autoRevealNext, 3000);
+                setTimeout(autoRevealNext, 2000);
             } else {
                 app.autoPlaying = false;
                 document.getElementById('autoPlayBtn').innerHTML = '<i class="fas fa-play"></i>';
@@ -1168,4 +1237,5 @@
         }
     </script>
 </body>
+</html>
 </html>
