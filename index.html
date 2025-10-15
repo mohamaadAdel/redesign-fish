@@ -6,7 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="theme-color" content="#0a0e27">
-    <title>love ass fish 💕</title>
+    <title>Heart of Love 💕</title>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -43,6 +43,7 @@
             overflow: hidden;
             position: relative;
             touch-action: pan-y;
+            overscroll-behavior: contain;
         }
 
         /* Safe area */
@@ -138,12 +139,13 @@
 
         /* Header - mobile optimized */
         .header {
-            padding: 12px 20px;
+            padding: 15px 20px;
             text-align: center;
-            background: rgba(10, 14, 39, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 14, 39, 0.9);
+            backdrop-filter: blur(15px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .title {
@@ -154,7 +156,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
             letter-spacing: 1px;
         }
 
@@ -166,9 +168,15 @@
         }
 
         .heart-symbol {
-            font-size: 1rem;
-            margin: 2px 0;
+            font-size: 1.1rem;
+            margin: 3px 0;
             color: var(--heart-red);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
         /* Heart constellation map - mobile optimized */
@@ -179,7 +187,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px;
+            padding: 15px;
             -webkit-overflow-scrolling: touch;
         }
 
@@ -188,52 +196,54 @@
             position: relative;
             width: 100%;
             max-width: min(380px, 90vw);
-            height: min(380px, 70vh);
+            height: min(380px, 65vh);
             touch-action: manipulation;
         }
 
         /* Message emojis - mobile optimized */
         .message-emoji {
             position: absolute;
-            width: 28px;
-            height: 28px;
+            width: 30px;
+            height: 30px;
             cursor: pointer;
             transition: all 0.2s ease;
             z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.05);
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 50%;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 71, 87, 0.2);
-            -webkit-tap-highlight-color: rgba(255, 71, 87, 0.3);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 71, 87, 0.3);
+            -webkit-tap-highlight-color: rgba(255, 71, 87, 0.4);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .message-emoji:active {
-            transform: scale(0.95);
+            transform: scale(0.92);
+            transition: transform 0.1s ease;
         }
 
         .message-emoji.revealed {
-            background: rgba(255, 71, 87, 0.15);
+            background: rgba(255, 71, 87, 0.2);
             border-color: var(--heart-red);
-            transform: scale(1.2);
-            box-shadow: 0 0 15px rgba(255, 71, 87, 0.6);
+            transform: scale(1.15);
+            box-shadow: 0 0 20px rgba(255, 71, 87, 0.7);
             animation: heartbeat 0.6s ease-in-out;
         }
 
         @keyframes heartbeat {
-            0% { transform: scale(1.2); }
-            50% { transform: scale(1.35); }
-            100% { transform: scale(1.2); }
+            0% { transform: scale(1.15); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1.15); }
         }
 
         /* Heart lines - simplified */
         .heart-line {
             position: absolute;
             height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255, 71, 87, 0.3), transparent);
+            background: linear-gradient(to right, transparent, rgba(255, 71, 87, 0.4), transparent);
             transform-origin: left center;
             z-index: 5;
             opacity: 0;
@@ -251,7 +261,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(10, 14, 39, 0.95);
+            background: rgba(10, 14, 39, 0.96);
             backdrop-filter: blur(20px);
             display: none;
             align-items: center;
@@ -268,15 +278,15 @@
         }
 
         .message-content {
-            background: rgba(26, 31, 58, 0.9);
-            border: 1px solid rgba(255, 71, 87, 0.3);
+            background: rgba(26, 31, 58, 0.95);
+            border: 2px solid rgba(255, 71, 87, 0.4);
             border-radius: 20px;
-            padding: 20px;
+            padding: 25px;
             max-width: min(350px, 90vw);
             width: 100%;
             text-align: center;
             position: relative;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
         }
 
         .message-number {
@@ -286,33 +296,36 @@
             transform: translateX(-50%);
             background: linear-gradient(135deg, var(--heart-red), var(--heart-pink));
             color: white;
-            width: 24px;
-            height: 24px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 8px rgba(255, 71, 87, 0.4);
         }
 
         .message-text {
-            font-size: 0.95rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
             line-height: 1.4;
             color: var(--text-light);
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
         .close-message {
             background: none;
-            border: 1px solid var(--heart-red);
+            border: 2px solid var(--heart-red);
             color: var(--heart-red);
-            padding: 8px 20px;
-            border-radius: 20px;
+            padding: 10px 24px;
+            border-radius: 25px;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            font-weight: 500;
             -webkit-tap-highlight-color: rgba(255, 71, 87, 0.3);
+            min-height: 44px;
         }
 
         .close-message:active {
@@ -327,21 +340,22 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(10, 14, 39, 0.9);
+            background: rgba(10, 14, 39, 0.95);
             backdrop-filter: blur(20px);
-            padding: 10px 20px calc(10px + env(safe-area-inset-bottom, 0));
+            padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0));
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .nav-button {
             background: none;
             border: none;
             color: var(--text-dim);
-            font-size: 1rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.2s ease;
             padding: 8px;
@@ -350,32 +364,35 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            border-radius: 8px;
         }
 
         .nav-button:active {
             color: var(--heart-red);
             transform: scale(0.9);
+            background: rgba(255, 71, 87, 0.1);
         }
 
         .progress-indicator {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .progress-text {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-dim);
+            font-weight: 500;
         }
 
         .progress-dots {
             display: flex;
-            gap: 3px;
+            gap: 4px;
         }
 
         .progress-dot {
-            width: 5px;
-            height: 5px;
+            width: 6px;
+            height: 6px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
@@ -384,28 +401,29 @@
         .progress-dot.revealed {
             background: var(--heart-red);
             transform: scale(1.3);
+            box-shadow: 0 0 6px rgba(255, 71, 87, 0.5);
         }
 
         /* Music player - mobile optimized */
         .music-player {
             position: fixed;
-            top: calc(70px + env(safe-area-inset-top, 0));
+            top: calc(75px + env(safe-area-inset-top, 0));
             right: 15px;
-            background: rgba(26, 31, 58, 0.9);
+            background: rgba(26, 31, 58, 0.95);
             backdrop-filter: blur(20px);
-            padding: 8px;
-            border-radius: 20px;
+            padding: 10px;
+            border-radius: 25px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             z-index: 150;
-            border: 1px solid rgba(255, 71, 87, 0.2);
+            border: 2px solid rgba(255, 71, 87, 0.3);
         }
 
         .music-btn {
-            width: 26px;
-            height: 26px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             border: none;
             background: linear-gradient(135deg, var(--heart-red), var(--heart-pink));
@@ -415,9 +433,10 @@
             justify-content: center;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-size: 0.65rem;
-            min-width: 26px;
-            min-height: 26px;
+            font-size: 0.7rem;
+            min-width: 28px;
+            min-height: 28px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
 
         .music-btn:active {
@@ -488,17 +507,17 @@
 
         .complete-title {
             font-family: 'Cinzel', serif;
-            font-size: 1.6rem;
+            font-size: clamp(1.4rem, 5vw, 1.8rem);
             font-weight: 700;
             background: linear-gradient(135deg, var(--heart-red), var(--heart-pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .complete-message {
-            font-size: 0.95rem;
+            font-size: clamp(0.9rem, 3vw, 1rem);
             color: var(--text-light);
             line-height: 1.4;
             margin-bottom: 20px;
@@ -508,13 +527,14 @@
             background: linear-gradient(135deg, var(--heart-red), var(--heart-pink));
             border: none;
             color: white;
-            padding: 10px 25px;
+            padding: 12px 28px;
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.2s ease;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
-            min-height: 44px;
+            min-height: 48px;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
         }
 
         .complete-button:active {
@@ -529,14 +549,18 @@
             transform: translate(-50%, -50%);
             text-align: center;
             color: var(--text-dim);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             z-index: 5;
             pointer-events: none;
             animation: fadeInOut 4s ease-in-out infinite;
+            padding: 10px 20px;
+            background: rgba(10, 14, 39, 0.8);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 71, 87, 0.2);
         }
 
         @keyframes fadeInOut {
-            0%, 100% { opacity: 0.5; }
+            0%, 100% { opacity: 0.6; }
             50% { opacity: 1; }
         }
 
@@ -558,10 +582,29 @@
                 opacity: 1;
             }
             to {
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
                 opacity: 0;
             }
+        }
+
+        /* Swipe hint */
+        .swipe-hint {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 6;
+            pointer-events: none;
+        }
+
+        .swipe-hint.show {
+            opacity: 0.7;
         }
 
         /* Responsive breakpoints */
@@ -584,11 +627,11 @@
 
         @media (max-width: 380px) {
             .header {
-                padding: 10px 15px;
+                padding: 12px 15px;
             }
             
             .message-content {
-                padding: 15px;
+                padding: 20px;
             }
             
             .message-text {
@@ -596,9 +639,9 @@
             }
             
             .message-emoji {
-                width: 26px;
-                height: 26px;
-                font-size: 0.9rem;
+                width: 28px;
+                height: 28px;
+                font-size: 1rem;
             }
         }
 
@@ -612,9 +655,9 @@
             }
             
             .message-emoji {
-                width: 24px;
-                height: 24px;
-                font-size: 0.85rem;
+                width: 26px;
+                height: 26px;
+                font-size: 0.9rem;
             }
         }
 
@@ -625,9 +668,9 @@
             }
             
             .message-emoji {
-                width: 24px;
-                height: 24px;
-                font-size: 0.9rem;
+                width: 26px;
+                height: 26px;
+                font-size: 1rem;
             }
         }
 
@@ -659,6 +702,27 @@
                 transform: translateZ(0);
             }
         }
+
+        /* Focus states for accessibility */
+        .nav-button:focus-visible {
+            outline: 2px solid var(--heart-red);
+            outline-offset: 2px;
+        }
+
+        .music-btn:focus-visible {
+            outline: 2px solid var(--heart-red);
+            outline-offset: 2px;
+        }
+
+        .close-message:focus-visible {
+            outline: 2px solid var(--heart-red);
+            outline-offset: 2px;
+        }
+
+        .complete-button:focus-visible {
+            outline: 2px solid var(--heart-red);
+            outline-offset: 2px;
+        }
     </style>
 </head>
 <body>
@@ -674,9 +738,9 @@
     <div class="app-container">
         <!-- Header -->
         <header class="header">
-            <h1 class="title">my heart fish</h1>
+            <h1 class="title">Heart of Love</h1>
             <div class="heart-symbol">💕</div>
-            <p class="subtitle"> i love you so sos os much</p>
+            <p class="subtitle">Each emoji holds a piece of my heart for you</p>
         </header>
 
         <!-- Heart constellation map -->
@@ -689,6 +753,11 @@
                 <!-- Heart shape will be created here -->
             </div>
         </main>
+
+        <!-- Swipe hint -->
+        <div class="swipe-hint" id="swipeHint">
+            <div>Keep exploring! 💕</div>
+        </div>
 
         <!-- Navigation -->
         <nav class="navigation">
@@ -837,7 +906,8 @@
             autoPlaying: false,
             audioElements: [],
             emojiPositions: [],
-            heartLines: []
+            heartLines: [],
+            lastTapTime: 0
         };
 
         // Initialize app
@@ -875,7 +945,7 @@
             const universe = document.querySelector('.universe');
             
             // Create fewer background stars for performance
-            for (let i = 0; i < 80; i++) {
+            for (let i = 0; i < 60; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 star.style.width = `${Math.random() * 2}px`;
@@ -888,7 +958,7 @@
             
             // Create shooting stars less frequently
             setInterval(() => {
-                if (Math.random() > 0.8 && document.querySelectorAll('.shooting-star').length < 2) {
+                if (Math.random() > 0.85 && document.querySelectorAll('.shooting-star').length < 2) {
                     const shootingStar = document.createElement('div');
                     shootingStar.className = 'shooting-star';
                     shootingStar.style.left = `${Math.random() * 100}%`;
@@ -897,7 +967,7 @@
                     
                     setTimeout(() => shootingStar.remove(), 3000);
                 }
-            }, 5000);
+            }, 6000);
         }
 
         // Create mobile optimized heart shape
@@ -910,7 +980,7 @@
             
             // Create a heart shape optimized for mobile
             const heartPoints = [];
-            const layers = window.innerWidth < 380 ? 3 : 4; // Fewer layers on small screens
+            const layers = window.innerWidth < 380 ? 3 : 4;
             const pointsPerLayer = window.innerWidth < 380 ? 15 : 18;
             
             for (let layer = 0; layer < layers; layer++) {
@@ -958,8 +1028,8 @@
                 
                 const emoji = document.createElement('div');
                 emoji.className = 'message-emoji gpu-accelerated';
-                emoji.style.left = `${point.x - 14}px`;
-                emoji.style.top = `${point.y - 14}px`;
+                emoji.style.left = `${point.x - 15}px`;
+                emoji.style.top = `${point.y - 15}px`;
                 emoji.dataset.index = i;
                 
                 const emojiChar = heartEmojis[i % heartEmojis.length];
@@ -975,7 +1045,11 @@
                 
                 emoji.addEventListener('touchend', (e) => {
                     e.preventDefault();
-                    revealMessage(i);
+                    const now = Date.now();
+                    if (now - app.lastTapTime > 300) {
+                        revealMessage(i);
+                        app.lastTapTime = now;
+                    }
                 });
             }
             
@@ -986,7 +1060,7 @@
         // Create optimized heart lines
         function createOptimizedHeartLines() {
             const container = document.getElementById('heartContainer');
-            const maxLines = window.innerWidth < 380 ? 30 : 50;
+            const maxLines = window.innerWidth < 380 ? 25 : 35;
             
             // Connect nearby emojis with performance optimization
             for (let i = 0; i < app.emojiPositions.length && app.heartLines.length < maxLines; i++) {
@@ -1060,6 +1134,19 @@
                 }
             }
             
+            // Show swipe hint after a few reveals
+            if (app.revealedEmojis.size === 5) {
+                setTimeout(() => {
+                    const swipeHint = document.getElementById('swipeHint');
+                    if (swipeHint) {
+                        swipeHint.classList.add('show');
+                        setTimeout(() => {
+                            swipeHint.classList.remove('show');
+                        }, 3000);
+                    }
+                }, 1000);
+            }
+            
             // Check if all emojis are revealed
             if (app.revealedEmojis.size === Math.min(letterContent.length, app.emojiPositions.length)) {
                 setTimeout(showCompleteModal, 800);
@@ -1111,7 +1198,7 @@
         // Create celebration effect - optimized
         function createCelebration() {
             const universe = document.querySelector('.universe');
-            const starCount = window.innerWidth < 380 ? 20 : 30;
+            const starCount = window.innerWidth < 380 ? 20 : 25;
             
             for (let i = 0; i < starCount; i++) {
                 setTimeout(() => {
@@ -1127,7 +1214,7 @@
                             star.remove();
                         }
                     }, 2500);
-                }, i * 80);
+                }, i * 100);
             }
         }
 
@@ -1205,6 +1292,12 @@
                 instructions.style.display = 'block';
             }
             
+            // Hide swipe hint
+            const swipeHint = document.getElementById('swipeHint');
+            if (swipeHint) {
+                swipeHint.classList.remove('show');
+            }
+            
             // Update auto play button
             const autoPlayBtn = document.getElementById('autoPlayBtn');
             if (autoPlayBtn) {
@@ -1237,7 +1330,7 @@
             
             if (nextIndex !== undefined) {
                 revealMessage(nextIndex);
-                setTimeout(autoRevealNext, 2500);
+                setTimeout(autoRevealNext, 2000);
             } else {
                 app.autoPlaying = false;
                 const autoPlayBtn = document.getElementById('autoPlayBtn');
