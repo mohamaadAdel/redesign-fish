@@ -6,8 +6,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="theme-color" content="#0a0e27">
-    <title>love ass fish 💕</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>100 Reasons I Love You, fish 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -35,7 +35,7 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Quicksand', sans-serif;
             background: var(--primary-dark);
             min-height: 100vh;
             min-height: -webkit-fill-available;
@@ -146,8 +146,8 @@
         }
 
         .title {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(1.3rem, 5vw, 1.6rem);
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
             font-weight: 700;
             background: linear-gradient(135deg, var(--heart-red), var(--heart-pink));
             -webkit-background-clip: text;
@@ -158,16 +158,23 @@
         }
 
         .subtitle {
-            font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
             color: var(--text-dim);
             font-weight: 300;
             letter-spacing: 0.5px;
         }
 
         .heart-symbol {
-            font-size: 1.2rem;
-            margin: 3px 0;
+            font-size: 1.4rem;
+            margin: 5px 0;
             color: var(--heart-red);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
 
         /* Heart constellation map */
@@ -470,8 +477,8 @@
         }
 
         .complete-title {
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--heart-red), var(--heart-pink));
             -webkit-background-clip: text;
@@ -546,6 +553,35 @@
             }
         }
 
+        /* Floating hearts animation */
+        .floating-heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 1.5rem;
+            opacity: 0.7;
+            animation: float-up 8s linear infinite;
+            z-index: 2;
+        }
+
+        @keyframes float-up {
+            0% {
+                bottom: -50px;
+                transform: translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                bottom: 100vh;
+                transform: translateX(100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
         /* Responsive */
         @media (min-width: 768px) {
             .music-info {
@@ -609,15 +645,15 @@
     <div class="app-container">
         <!-- Header -->
         <header class="header">
-            <h1 class="title">lovliest fish</h1>
+            <h1 class="title">For My Dearest fishii</h1>
             <div class="heart-symbol">💕</div>
-            <p class="subtitle">i love u </p>
+            <p class="subtitle">100 Reasons Why I Love You</p>
         </header>
 
         <!-- Heart constellation map -->
         <main class="constellation-map" id="constellationMap">
             <div class="instructions" id="instructions">
-                <div>💕 Tap the emojis u stinky indian</div>
+                <div>💕 Tap the hearts to discover my love</div>
             </div>
             
             <div class="heart-container" id="heartContainer">
@@ -672,8 +708,8 @@
             <div class="complete-content">
                 <div class="complete-icon">💕</div>
                 <h2 class="complete-title">Our Complete Heart</h2>
-                <p class="complete-message">You've unlocked every piece of my heart. Each emoji represents a different feeling I have for you, all coming together to form the love I feel.</p>
-                <p class="complete-message">I love you, Fish. Now and forever. 💕</p>
+                <p class="complete-message">You've unlocked every piece of my heart. Each reason represents a different feeling I have for you, all coming together to form the love I feel.</p>
+                <p class="complete-message">I love you, fish Now and forever. 💕</p>
                 <button class="complete-button" id="completeButton">View Again</button>
             </div>
         </div>
@@ -685,81 +721,44 @@
     <script>
         // Letter content
         const letterContent = [
-            "Why I love you",
-            "I didn't fall for you because I was bored, or because I was searching for something to fill a void.",
-            "I didn't fall in love with you because I needed someone, or because I thought I couldn't be happy without you.",
-            "No, I fell because you opened my eyes to things I hadn't felt in a while.",
-            "You brought me a love that felt like sunlight after a long winter (i know ur ass hate summer sorry, the sunlight here is 15 degrees not 40).",
-            "I love you simply because you *ARE*—",
-            "Because you appeared in time where i thought i will never love anyone again.",
-            "And in that moment, you seized my attention like a song I never wanted to stop hearing.",
-            "It's as if my heart *knew* you would be the one to teach it to beat in new ways",
-            "To show me feelings I never thought were possible, and open myself to warmth I had never felt before.",
-            "I fell in love with you because it felt like *having all anxiety removed from me.* and all the strings removed",
-            "It was effortless, like the way we breathe.",
-            "Or how a bird knows the way back to its nest, even from miles away.",
-            "In your presence, I want to give you the world and everything i can give.",
-            "In your absence, I find myself searching for ways to be better for u and for myself.",
-           
-            "I fell in love with you for the simplest, most profound reason—",
-            "Because with you, everything just *fits and feels good*",
-            "It feels *right,* in a way I can't fully explain😔.",
-            "But I know and sure of it from my heart, it's exactly how I'm meant to feel about you",
-            "I love you, fish. Now. And forever.",
-            "you are literally the samllest baby ever, my baby, i love you so much, youre the sweetest and kindest ass ever",
-            "i know u dont like showing it but it still shows to me, how sweet and dumbass u are",
-            "i want to hold you between my arms, and take away all your bad feelings",
-            "i want to give you all my love and affection that i can possibly give",
-            "i know ur ass gets sick of my emotions 😔😔",
-            "im sorry if i make you feel bad and annoy you alot ",
-            "i want you so bad u cant imagine",
-            "loving u is the best thing ever, loving you makes me less tired and more energetic",
-            "Your beauty takes my breath away. Your eyes are so bright and big I could swim in them, looking at them makes me dizzy.",
-            "Your gayass long black hair, pretty face, and cute nose - all of you is total perfectiness. You have the prettiest skin tones ever, I love it so much.",
-            "Your personality lights up my world. You're too funny and have similar humor to me, and you stay patient even when I'm overwhelming.",
-            "You're extremely loving and caring, even though you try to show bitchiness - it's not you, I know that hahahaah 😔😡",
-            "You're a real ni99a , youre so generous with a selfless and giving ass self , You have good taste and I love the same things you love 😔",
-            "You're so considerate and caring, always taking attention to me  ",
-            "You cook so good and take beautiful photos of the things you cook.",
-            "I feel peace imagining you comfortably resting in my arms, as it is for me to converse with you.",
-            "you dont give yourself enough credit for how much good you are fuck you", 
-            "you might not see it but ur the most lovley ever, the sweetest, the cutest, the kindest, the most small kitty ever, whenever i think about u i want to take u in my hug and make u rest on my chest ",
-            "i hope im not pushing u away because of my hard feelings and being this way sorry ",
-
-            "when u send me selfies im always looking at ur pretty hair and i cant help but to stare at your eyes its so embarrassinggggg i every single detail of your face is so fucking pretty and its so unreal ",
-            "You're so accomplished , you set and achieve your goals. You come from chaos but youre trying so hard, and your doing good i swear , you're destined to have all you want.",
-            "You're my small baby who listens to me always",
-            "You're an individualist and critical thinker who does your own thing instead of losing yourself in others' opinions.",
-            "I love this so much about you, you idiot! You're in touch with every side of your emotions and unafraid to face them, making you wise and authentic.",
-            "You aren't afraid to set boundaries or cut off people and things that don't serve your best interests. I feel like I can relate to you sometimes.",
-            "You're well rounded (not your ass it's flattened 😓) and will succeed in anything. Your experiences and interests are so interesting.",
-            "I admire your work ethic so much. You never quit and keep working hard even when it's frustrating. You're the hardest worker I know, but I know how much it hurts you.",
-            "I wish you could stop working and never tire yourself again. It really hurts me seeing you hurting and feeling bad and stressed always .",
-            "can i borrow your genes for my future kids 🫢😿😳🧕🏿 ",
-            " you stole my heart but im too kind i will let u keep it 😓😔 ",
-            "🦋 Hope you feel happy everyday, because that makes me happy too",
-            " YOU ARE the cutessst, i don't mean just ur looks, but your personality, too, the things you say are cute, your voice is cute, your smile is the cutest i ever seen, your laugh is cute, youre so perfect , im losing my mind",
-            "You make trust so easy with your direct communication and gentle temperament with me. I love your taste in music and your voice is so drugging.",
-            "You're not afraid to have deep or sad conversations, but they're not your only conversations. Your ability to focus and prioritize important things amazes me.",
-            "You're realistic and authentic about the realities of life and its struggle. ",
-            "You take good selfies (send them all to me😡) - I love looking at your big eyes and pretty face.",
-            "Every moment with you is awesome in its own way. You comfort me, calm me, reassure me, and love me as I am.",
-            "You soften me, soothe me, and ground me. You take nothing for granted and value your loved ones.",
-            "You respect differences and appreciate similarities. You defend truth and face your fears. You're out of this world",
-            "You are so generous and kind, eternal and retardnes. You're gorgeous inside and out, work hard and never give up.baby",
-            "You address shame and guilt with heart and contemplate balance in all things. You're consistent in your values and cannot be swayed by temporality.",
-            "You back your words up with actions and know the value of vulnerability and the compassion in boundaries.",
-            "You are such a sweetheart and strong. You lead with the heart and also follow it.",
-            " i fell for your personality, your kindness., youre inner self.  I fell in love with your sympathy, honesty, your way of caring",
-            "i love what you are and what you arent, i love you completely and fully",
-            "talking to you is the best thing ever, i be always smiling and laughing, you always make my day without doing anything",
-            "i love being with you, i love talking to you i wish i could be with u 24/7",
-            "i hope im good enough for you 😔 i hope i will be able to meet your needs and deliver all you want and ask for",
-            "You are the deity upon which I meditate and devote my life to."
+            "You make me happy.",
+            "You make me to want a better version of myself😔.",
+            "You love me in the times when I'm so insfurable and annoying, overwhelming",
+         
+            "You forgive me quickly. even tho i did bad things for u im sorry",
+            "You understand me. And when you don't, you try to and you go all in to get clarity about the things you don't understand.",
+            "You respect my boundaries. and feelings",
+            "You see and you love the next best version of me.",
+            "You open yourself up for me.",
+            "You are truthful and vulnerable with me. (UR NOT FUCK YOU)",
+            "You don't play games or toy with me .",
+            "You throw away the masks that don't serve you.",
+            "You are doing everything to be better everyday i love it about u.",
+            "You are the prettiest ever.",
+            "You have the most beautiful eyes. Not just \"beautiful big eyes\". But the eyes I look into when I'm not sure if you love me and and their answer is always \"yes\".",
+            "You have a gentle, innocent smile that always comforts me.",
+            "your lovely voice makes me melt so bad",
+            "You are sad and you share your sadness with me. (not always and fuck you",
+            "You have the smoothest skin. I could spend hours just watching and caressing it.",
+            "Your energy is clean and bright.",
+            "You have a cute and calming voice that soothes me when I'm down.",
+            "the time i spend with u is the most fun and entertaining ",
+            "You are the only person who makes me laugh more then I can make myself laugh.",
+            "You know how to calm me down when I'm overthingking.",
+            "You have a unique dressing style amd its so pretty ur fashion sense is better than mine",
+            "You are so smart and a fast learner.",
+            "You taught me how to love unconditionally.",
+            "You allow me be myself and let me be as annoying and clingy as iam.",
+            "You always give your best and all u can ",
+            "You love and enjoy nature and peace i also do.",
+            "i love you.",
+            "You care about my opinion and u ask my about my opinion when ur taking a decision, i know its so dumb but thank u for doing that, thank u so much i love ytou ",
+            "you are who you are and that is the best thing ever ."
+        
         ];
 
         // Only use the specified emojis
-        const heartEmojis = ['😔', '💕', '🥵', '🥀', '💗', '😿', '♥️', '❤️‍🩹', '🫦', '😘'];
+        const heartEmojis = ['💕', '❤️', '💖', '💗', '💓', '💝', '💘', '💞', '💟', '❣️'];
         const songFiles = ['song.mp3', 'song2.mp3', 'song3.mp3', 'song4.mp3', 'song5.mp3', 'song6.mp3', 'song7.mp3'];
         const songTitles = ['Our First Song', 'Our Second Song', 'Our Third Song', 'Our Fourth Song', 'Our Fifth Song', 'Our Sixth Song', 'Our Seventh Song'];
 
@@ -772,7 +771,8 @@
             autoPlaying: false,
             audioElements: [],
             emojiPositions: [],
-            heartLines: []
+            heartLines: [],
+            currentReasonIndex: 0
         };
 
         // Initialize app
@@ -783,6 +783,7 @@
             setupEventListeners();
             createProgressDots();
             setupTouchOptimizations();
+            createFloatingHearts();
         }
 
         // Create audio elements
@@ -833,6 +834,23 @@
                     setTimeout(() => shootingStar.remove(), 3000);
                 }
             }, 4000);
+        }
+
+        // Create floating hearts
+        function createFloatingHearts() {
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                    heart.style.left = `${Math.random() * 100}%`;
+                    heart.style.animationDuration = `${6 + Math.random() * 4}s`;
+                    heart.style.opacity = `${0.3 + Math.random() * 0.4}`;
+                    document.querySelector('.universe').appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 10000);
+                }
+            }, 3000);
         }
 
         // Create detailed heart shape with many emojis
@@ -906,10 +924,10 @@
                 container.appendChild(emoji);
                 
                 // Add click event
-                emoji.addEventListener('click', () => revealMessage(i));
+                emoji.addEventListener('click', () => revealNextMessage());
                 emoji.addEventListener('touchend', (e) => {
                     e.preventDefault();
-                    revealMessage(i);
+                    revealNextMessage();
                 });
             }
             
@@ -952,20 +970,23 @@
             }
         }
 
-        // Reveal message
-        function revealMessage(index) {
-            if (app.revealedEmojis.has(index)) return;
+        // Reveal next message in sequence
+        function revealNextMessage() {
+            if (app.currentReasonIndex >= letterContent.length) {
+                // All reasons have been revealed
+                showCompleteModal();
+                return;
+            }
             
-            app.revealedEmojis.add(index);
-            
-            // Update emoji appearance
-            const emoji = document.querySelector(`.message-emoji[data-index="${index}"]`);
-            emoji.classList.add('revealed');
+            // Update the clicked emoji appearance
+            const allEmojis = document.querySelectorAll('.message-emoji');
+            const randomEmoji = allEmojis[Math.floor(Math.random() * allEmojis.length)];
+            randomEmoji.classList.add('revealed');
             
             // Show heart lines connected to this emoji
             app.heartLines.forEach(line => {
                 const emojis = line.dataset.emojis.split('-').map(Number);
-                if (emojis.includes(index)) {
+                if (emojis.includes(parseInt(randomEmoji.dataset.index))) {
                     line.classList.add('visible');
                 }
             });
@@ -975,22 +996,20 @@
             const messageNumber = document.getElementById('messageNumber');
             const messageText = document.getElementById('messageText');
             
-            messageNumber.textContent = index + 1;
-            messageText.textContent = letterContent[index];
+            messageNumber.textContent = app.currentReasonIndex + 1;
+            messageText.textContent = letterContent[app.currentReasonIndex];
             
             modal.classList.add('show');
+            
+            // Increment the current reason index
+            app.currentReasonIndex++;
             
             // Update progress
             updateProgress();
             
             // Hide instructions after first emoji
-            if (app.revealedEmojis.size === 1) {
+            if (app.currentReasonIndex === 1) {
                 document.getElementById('instructions').style.display = 'none';
-            }
-            
-            // Check if all emojis are revealed
-            if (app.revealedEmojis.size === Math.min(letterContent.length, app.emojiPositions.length)) {
-                setTimeout(showCompleteModal, 1000);
             }
             
             // Haptic feedback
@@ -1001,8 +1020,8 @@
 
         // Update progress
         function updateProgress() {
-            const total = Math.min(letterContent.length, app.emojiPositions.length);
-            const revealed = app.revealedEmojis.size;
+            const total = letterContent.length;
+            const revealed = app.currentReasonIndex;
             
             document.getElementById('progressText').textContent = `${revealed} revealed`;
             
@@ -1015,7 +1034,7 @@
         // Create progress dots
         function createProgressDots() {
             const container = document.getElementById('progressDots');
-            const total = Math.min(letterContent.length, app.emojiPositions.length);
+            const total = letterContent.length;
             
             for (let i = 0; i < total; i++) {
                 const dot = document.createElement('div');
@@ -1078,7 +1097,7 @@
 
         // Reset heart
         function resetHeart() {
-            app.revealedEmojis.clear();
+            app.currentReasonIndex = 0;
             app.autoPlaying = false;
             
             // Reset emojis
@@ -1118,12 +1137,8 @@
         function autoRevealNext() {
             if (!app.autoPlaying) return;
             
-            const total = Math.min(letterContent.length, app.emojiPositions.length);
-            const nextIndex = Array.from({length: total}, (_, i) => i)
-                .find(i => !app.revealedEmojis.has(i));
-            
-            if (nextIndex !== undefined) {
-                revealMessage(nextIndex);
+            if (app.currentReasonIndex < letterContent.length) {
+                revealNextMessage();
                 setTimeout(autoRevealNext, 2000);
             } else {
                 app.autoPlaying = false;
@@ -1237,5 +1252,4 @@
         }
     </script>
 </body>
-</html>
 </html>
