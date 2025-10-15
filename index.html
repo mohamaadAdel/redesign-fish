@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#0a0e27">
+    <title>Constellation of Love 💫</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        :root {
+            --primary-dark: #0a0e27;
+            --secondary-dark: #1a1f3a;
+            --accent-blue: #4a69bd;
+            --accent-purple: #6c5ce7;
+            --accent-pink: #fd79a8;
+            --accent-gold: #fdcb6e;
+            --text-light: #dfe6e9;
+            --text-dim: #b2bec3;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--primary-dark);
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            color: var(--text-light);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Safe area */
+        .safe-area {
+            height: env(safe-area-inset-top, 0);
+            background: var(--primary-dark);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        /* Starry background */
+        .universe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 4s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Shooting stars */
+        .shooting-star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            animation: shoot 3s linear infinite;
+            opacity: 0;
+        }
+
+        .shooting-star::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to left, transparent, white);
+            transform: translateX(-100px);
+        }
+
+        @keyframes shoot {
+            0% {
+                transform: translateX(0) translateY(0) rotate(-45deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-500px) translateY(500px) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+
+        /* App container */
+        .app-container {
+            position: relative;
+            height: 100vh;
+            height: -webkit-fill-available;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+            padding-top: env(safe-area-inset-top, 0);
+        }
+
+        /* Header */
+        .header {
+            padding: 20px;
+            text-align: center;
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
+        }
+
+        .title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.5rem, 6vw, 2rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
+            color: var(--text-dim);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* Constellation map */
+        .constellation-map {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Message stars */
+        .message-star {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .message-star-inner {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, var(--accent-gold) 0%, var(--accent-pink) 50%, transparent 70%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 0 20px rgba(253, 203, 110, 0.6);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .message-star.revealed .message-star-inner {
+            background: radial-gradient(circle, var(--accent-blue) 0%, var(--accent-purple) 50%, transparent 70%);
+            box-shadow: 0 0 30px rgba(108, 92, 231, 0.8);
+        }
+
+        /* Constellation lines */
+        .constellation-line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(253, 203, 110, 0.5), transparent);
+            transform-origin: left center;
+            z-index: 5;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .constellation-line.visible {
+            opacity: 1;
+        }
+
+        /* Message modal */
+        .message-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(20px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 200;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .message-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .message-content {
+            background: rgba(26, 31, 58, 0.9);
+            border: 1px solid rgba(253, 203, 110, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .message-number {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-pink));
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .message-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .close-message {
+            background: none;
+            border: 1px solid var(--accent-pink);
+            color: var(--accent-pink);
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .close-message:active {
+            background: var(--accent-pink);
+            color: white;
+        }
+
+        /* Navigation */
+        .navigation {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 14, 39, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 15px 20px calc(15px + env(safe-area-inset-bottom, 0));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-button {
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 8px;
+        }
+
+        .nav-button:active {
+            color: var(--accent-gold);
+            transform: scale(0.9);
+        }
+
+        .progress-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
+
+        .progress-dots {
+            display: flex;
+            gap: 5px;
+        }
+
+        .progress-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .progress-dot.revealed {
+            background: var(--accent-gold);
+            transform: scale(1.2);
+        }
+
+        /* Music player */
+        .music-player {
+            position: fixed;
+            top: calc(80px + env(safe-area-inset-top, 0));
+            right: 20px;
+            background: rgba(26, 31, 58, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 12px;
+            border-radius: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 150;
+            border: 1px solid rgba(253, 203, 110, 0.2);
+        }
+
+        .music-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.8rem;
+        }
+
+        .music-btn:active {
+            transform: scale(0.9);
+        }
+
+        .music-info {
+            display: none;
+            flex-direction: column;
+            min-width: 0;
+            max-width: 100px;
+        }
+
+        .music-title {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .music-status {
+            font-size: 0.6rem;
+            color: var(--text-dim);
+        }
+
+        /* Constellation complete modal */
+        .complete-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 14, 39, 0.98);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            z-index: 300;
+        }
+
+        .complete-modal.show {
+            display: flex;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .complete-content {
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .complete-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .complete-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .complete-message {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .complete-button {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .complete-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Instructions */
+        .instructions {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 1rem;
+            z-index: 5;
+            pointer-events: none;
+            animation: fadeInOut 4s ease-in-out infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Touch feedback */
+        .touch-ripple {
+            position: fixed;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(253, 203, 110, 0.4), transparent);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            animation: ripple 0.6s ease-out;
+            z-index: 9999;
+        }
+
+        @keyframes ripple {
+            from {
+                width: 0;
+                height: 0;
+                opacity: 1;
+            }
+            to {
+                width: 80px;
+                height: 80px;
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (min-width: 768px) {
+            .music-info {
+                display: flex;
+            }
+            
+            .message-star {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .message-content {
+                padding: 20px;
+            }
+            
+            .message-text {
+                font-size: 1rem;
+            }
+        }
+
+        /* Performance */
+        .gpu-accelerated {
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Safe area -->
+    <div class="safe-area"></div>
+
+    <!-- Starry background -->
+    <div class="universe">
+        <div class="stars" id="stars"></div>
+    </div>
+
+    <!-- App container -->
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">Constellation of Love</h1>
+            <p class="subtitle">Each star holds a message for you 💫</p>
+        </header>
+
+        <!-- Constellation map -->
+        <main class="constellation-map" id="constellationMap">
+            <div class="instructions" id="instructions">
+                <div>🌟 Tap the stars to reveal your messages</div>
+            </div>
+        </main>
+
+        <!-- Navigation -->
+        <nav class="navigation">
+            <button class="nav-button" id="resetBtn" aria-label="Reset">
+                <i class="fas fa-redo"></i>
+            </button>
+            
+            <div class="progress-indicator">
+                <span class="progress-text" id="progressText">0 revealed</span>
+                <div class="progress-dots" id="progressDots"></div>
+            </div>
+            
+            <button class="nav-button" id="autoPlayBtn" aria-label="Auto Play">
+                <i class="fas fa-play"></i>
+            </button>
+        </nav>
+
+        <!-- Music player -->
+        <div class="music-player" id="musicPlayer">
+            <button class="music-btn" id="prevBtn" aria-label="Previous">
+                <i class="fas fa-backward"></i>
+            </button>
+            <button class="music-btn" id="playPauseBtn" aria-label="Play/Pause">
+                <i class="fas fa-play" id="playIcon"></i>
+            </button>
+            <button class="music-btn" id="nextBtn" aria-label="Next">
+                <i class="fas fa-forward"></i>
+            </button>
+            <div class="music-info">
+                <div class="music-title" id="musicTitle">Our Songs</div>
+                <div class="music-status" id="musicStatus">Tap to play</div>
+            </div>
+        </div>
+
+        <!-- Message modal -->
+        <div class="message-modal" id="messageModal">
+            <div class="message-content">
+                <div class="message-number" id="messageNumber">1</div>
+                <div class="message-text" id="messageText"></div>
+                <button class="close-message" id="closeMessage">Continue</button>
+            </div>
+        </div>
+
+        <!-- Complete modal -->
+        <div class="complete-modal" id="completeModal">
+            <div class="complete-content">
+                <div class="complete-icon">🌌</div>
+                <h2 class="complete-title">Your Love Constellation</h2>
+                <p class="complete-message">You've discovered all the stars in our universe. Each one shining with my love for you.</p>
+                <p class="complete-message">I love you, Fish. Now and forever. 💫</p>
+                <button class="complete-button" id="completeButton">View Again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio container -->
+    <div id="audioContainer"></div>
+
+    <script>
+        // Letter content
+        const letterContent = [
+            "Why I love you",
+            "I didn't fall for you because I was bored, or because I was searching for something to fill a void.",
+            "I didn't fall in love with you because I needed someone, or because I thought I couldn't be happy without you.",
+            "No, I fell because you opened my eyes to things I hadn't felt in a while.",
+            "You brought me a love that felt like sunlight after a long winter (i know ur ass hate summer sorry, the sunlight here is 15 degrees not 40).",
+            "I love you simply because you *ARE*—",
+            "Because you appeared in time where i thought i will never love anyone again.",
+            "And in that moment, you seized my attention like a song I never wanted to stop hearing.",
+            "It's as if my heart *knew* you would be the one to teach it to beat in new ways",
+            "To show me feelings I never thought were possible, and open myself to warmth I had never felt before.",
+            "I fell in love with you because it felt like *having all anxiety removed from me.* and all the strings removed",
+            "It was effortless, like the way we breathe.",
+            "Or how a bird knows the way back to its nest, even from miles away.",
+            "In your presence, I want to give you the world and everything i can give.",
+            "In your absence, I find myself searching for ways to be better for u and for myself.",
+           
+            "I fell in love with you for the simplest, most profound reason—",
+            "Because with you, everything just *fits and feels good*",
+            "It feels *right,* in a way I can't fully explain😔.",
+            "But I know and sure of it from my heart, it's exactly how I'm meant to feel about you",
+            "I love you, fish. Now. And forever.",
+            "you are literally the samllest baby ever, my baby, i love you so much, youre the sweetest and kindest ass ever",
+            "i know u dont like showing it but it still shows to me, how sweet and dumbass u are",
+            "i want to hold you between my arms, and take away all your bad feelings",
+            "i want to give you all my love and affection that i can possibly give",
+            "i know ur ass gets sick of my emotions 😔😔",
+            "im sorry if i make you feel bad and annoy you alot ",
+            "i want you so bad u cant imagine",
+            "loving u is the best thing ever, loving you makes me less tired and more energetic",
+            "Your beauty takes my breath away. Your eyes are so bright and big I could swim in them, looking at them makes me dizzy.",
+            "Your gayass long black hair, pretty face, and cute nose - all of you is total perfectiness. You have the prettiest skin tones ever, I love it so much.",
+            "Your personality lights up my world. You're too funny and have similar humor to me, and you stay patient even when I'm overwhelming.",
+            "You're extremely loving and caring, even though you try to show bitchiness - it's not you, I know that hahahaah 😔😡",
+            "You're a real ni99a , youre so generous with a selfless and giving ass self , You have good taste and I love the same things you love 😔",
+            "You're so considerate and caring, always taking attention to me  ",
+            "You cook so good and take beautiful photos of the things you cook.",
+            "I feel peace imagining you comfortably resting in my arms, as it is for me to converse with you.",
+            "you dont give yourself enough credit for how much good you are fuck you", 
+            "you might not see it but ur the most lovley ever, the sweetest, the cutest, the kindest, the most small kitty ever, whenever i think about u i want to take u in my hug and make u rest on my chest ",
+            "i hope im not pushing u away because of my hard feelings and being this way sorry ",
+
+            "when u send me selfies im always looking at ur pretty hair and i cant help but to stare at your eyes its so embarrassinggggg i every single detail of your face is so fucking pretty and its so unreal ",
+            "You're so accomplished , you set and achieve your goals. You come from chaos but youre trying so hard, and your doing good i swear , you're destined to have all you want.",
+            "You're my small baby who listens to me always",
+            "You're an individualist and critical thinker who does your own thing instead of losing yourself in others' opinions.",
+            "I love this so much about you, you idiot! You're in touch with every side of your emotions and unafraid to face them, making you wise and authentic.",
+            "You aren't afraid to set boundaries or cut off people and things that don't serve your best interests. I feel like I can relate to you sometimes.",
+            "You're well rounded (not your ass it's flattened 😓) and will succeed in anything. Your experiences and interests are so interesting.",
+            "I admire your work ethic so much. You never quit and keep working hard even when it's frustrating. You're the hardest worker I know, but I know how much it hurts you.",
+            "I wish you could stop working and never tire yourself again. It really hurts me seeing you hurting and feeling bad and stressed always .",
+            "can i borrow your genes for my future kids 🫢😿😳🧕🏿 ",
+            " you stole my heart but im too kind i will let u keep it 😓😔 ",
+            "🦋 Hope you feel happy everyday, because that makes me happy too",
+            " YOU ARE the cutessst, i don't mean just ur looks, but your personality, too, the things you say are cute, your voice is cute, your smile is the cutest i ever seen, your laugh is cute, youre so perfect , im losing my mind",
+            "You make trust so easy with your direct communication and gentle temperament with me. I love your taste in music and your voice is so drugging.",
+            "You're not afraid to have deep or sad conversations, but they're not your only conversations. Your ability to focus and prioritize important things amazes me.",
+            "You're realistic and authentic about the realities of life and its struggle. ",
+            "You take good selfies (send them all to me😡) - I love looking at your big eyes and pretty face.",
+            "Every moment with you is awesome in its own way. You comfort me, calm me, reassure me, and love me as I am.",
+            "You soften me, soothe me, and ground me. You take nothing for granted and value your loved ones.",
+            "You respect differences and appreciate similarities. You defend truth and face your fears. You're out of this world",
+            "You are so generous and kind, eternal and retardnes. You're gorgeous inside and out, work hard and never give up.baby",
+            "You address shame and guilt with heart and contemplate balance in all things. You're consistent in your values and cannot be swayed by temporality.",
+            "You back your words up with actions and know the value of vulnerability and the compassion in boundaries.",
+            "You are such a sweetheart and strong. You lead with the heart and also follow it.",
+            " i fell for your personality, your kindness., youre inner self.  I fell in love with your sympathy, honesty, your way of caring",
+            "i love what you are and what you arent, i love you completely and fully",
+            "talking to you is the best thing ever, i be always smiling and laughing, you always make my day without doing anything",
+            "i love being with you, i love talking to you i wish i could be with u 24/7",
+            "i hope im good enough for you 😔 i hope i will be able to meet your needs and deliver all you want and ask for",
+            "You are the deity upon which I meditate and devote my life to."
+        ];
+
+        const starIcons = ['⭐', '✨', '💫', '🌟', '⚡', '🌠', '💥', '✦'];
+        const songFiles = ['song.mp3', 'song2.mp3', 'song3.mp3', 'song4.mp3', 'song5.mp3', 'song6.mp3', 'song7.mp3'];
+        const songTitles = ['Our First Song', 'Our Second Song', 'Our Third Song', 'Our Fourth Song', 'Our Fifth Song', 'Our Sixth Song', 'Our Seventh Song'];
+
+        // App state
+        const app = {
+            currentSong: 0,
+            isPlaying: false,
+            userInteracted: false,
+            revealedStars: new Set(),
+            autoPlaying: false,
+            audioElements: [],
+            starPositions: [],
+            constellationLines: []
+        };
+
+        // Initialize app
+        function init() {
+            createAudioElements();
+            createStarryBackground();
+            createConstellation();
+            setupEventListeners();
+            createProgressDots();
+            setupTouchOptimizations();
+        }
+
+        // Create audio elements
+        function createAudioElements() {
+            const container = document.getElementById('audioContainer');
+            songFiles.forEach((file, index) => {
+                const audio = document.createElement('audio');
+                audio.id = `audio${index}`;
+                audio.preload = 'none';
+                audio.volume = 0.5;
+                container.appendChild(audio);
+                app.audioElements.push(audio);
+                
+                audio.addEventListener('ended', () => {
+                    if (app.isPlaying) {
+                        playNext();
+                    }
+                });
+            });
+        }
+
+        // Create starry background
+        function createStarryBackground() {
+            const starsContainer = document.getElementById('stars');
+            const universe = document.querySelector('.universe');
+            
+            // Create background stars
+            for (let i = 0; i < 200; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = `${Math.random() * 3}px`;
+                star.style.height = star.style.width;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.animationDelay = `${Math.random() * 4}s`;
+                starsContainer.appendChild(star);
+            }
+            
+            // Create shooting stars
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    const shootingStar = document.createElement('div');
+                    shootingStar.className = 'shooting-star';
+                    shootingStar.style.left = `${Math.random() * 100}%`;
+                    shootingStar.style.top = `${Math.random() * 50}%`;
+                    universe.appendChild(shootingStar);
+                    
+                    setTimeout(() => shootingStar.remove(), 3000);
+                }
+            }, 3000);
+        }
+
+        // Create constellation
+        function createConstellation() {
+            const map = document.getElementById('constellationMap');
+            const mapRect = map.getBoundingClientRect();
+            const messageCount = Math.min(letterContent.length, 20); // Limit to 20 stars for performance
+            
+            // Generate star positions in a constellation pattern
+            const centerX = mapRect.width / 2;
+            const centerY = mapRect.height / 2;
+            const radius = Math.min(centerX, centerY) * 0.7;
+            
+            for (let i = 0; i < messageCount; i++) {
+                const angle = (i / messageCount) * Math.PI * 2;
+                const r = radius * (0.5 + Math.random() * 0.5);
+                const x = centerX + Math.cos(angle) * r;
+                const y = centerY + Math.sin(angle) * r;
+                
+                app.starPositions.push({ x, y, index: i });
+                
+                // Create star element
+                const star = document.createElement('div');
+                star.className = 'message-star gpu-accelerated';
+                star.style.left = `${x - 30}px`;
+                star.style.top = `${y - 30}px`;
+                star.dataset.index = i;
+                
+                const starInner = document.createElement('div');
+                starInner.className = 'message-star-inner';
+                starInner.textContent = starIcons[i % starIcons.length];
+                
+                star.appendChild(starInner);
+                map.appendChild(star);
+                
+                // Add click event
+                star.addEventListener('click', () => revealMessage(i));
+                star.addEventListener('touchend', (e) => {
+                    e.preventDefault();
+                    revealMessage(i);
+                });
+            }
+            
+            // Create constellation lines
+            createConstellationLines();
+        }
+
+        // Create constellation lines
+        function createConstellationLines() {
+            const map = document.getElementById('constellationMap');
+            
+            // Connect nearby stars to form constellation
+            for (let i = 0; i < app.starPositions.length; i++) {
+                for (let j = i + 1; j < app.starPositions.length; j++) {
+                    const star1 = app.starPositions[i];
+                    const star2 = app.starPositions[j];
+                    const distance = Math.sqrt(
+                        Math.pow(star2.x - star1.x, 2) + 
+                        Math.pow(star2.y - star1.y, 2)
+                    );
+                    
+                    // Connect stars that are close enough
+                    if (distance < 150 && Math.random() > 0.5) {
+                        const line = document.createElement('div');
+                        line.className = 'constellation-line';
+                        line.dataset.stars = `${i}-${j}`;
+                        
+                        const angle = Math.atan2(star2.y - star1.y, star2.x - star1.x);
+                        const length = distance;
+                        
+                        line.style.width = `${length}px`;
+                        line.style.left = `${star1.x}px`;
+                        line.style.top = `${star1.y}px`;
+                        line.style.transform = `rotate(${angle}rad)`;
+                        
+                        map.appendChild(line);
+                        app.constellationLines.push(line);
+                    }
+                }
+            }
+        }
+
+        // Reveal message
+        function revealMessage(index) {
+            if (app.revealedStars.has(index)) return;
+            
+            app.revealedStars.add(index);
+            
+            // Update star appearance
+            const star = document.querySelector(`.message-star[data-index="${index}"]`);
+            star.classList.add('revealed');
+            
+            // Show constellation lines connected to this star
+            app.constellationLines.forEach(line => {
+                const stars = line.dataset.stars.split('-').map(Number);
+                if (stars.includes(index)) {
+                    line.classList.add('visible');
+                }
+            });
+            
+            // Show message modal
+            const modal = document.getElementById('messageModal');
+            const messageNumber = document.getElementById('messageNumber');
+            const messageText = document.getElementById('messageText');
+            
+            messageNumber.textContent = index + 1;
+            messageText.textContent = letterContent[index];
+            
+            modal.classList.add('show');
+            
+            // Update progress
+            updateProgress();
+            
+            // Hide instructions after first star
+            if (app.revealedStars.size === 1) {
+                document.getElementById('instructions').style.display = 'none';
+            }
+            
+            // Check if all stars are revealed
+            if (app.revealedStars.size === Math.min(letterContent.length, 20)) {
+                setTimeout(showCompleteModal, 1000);
+            }
+            
+            // Haptic feedback
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+        }
+
+        // Update progress
+        function updateProgress() {
+            const total = Math.min(letterContent.length, 20);
+            const revealed = app.revealedStars.size;
+            
+            document.getElementById('progressText').textContent = `${revealed} revealed`;
+            
+            const dots = document.querySelectorAll('.progress-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('revealed', index < revealed);
+            });
+        }
+
+        // Create progress dots
+        function createProgressDots() {
+            const container = document.getElementById('progressDots');
+            const total = Math.min(letterContent.length, 20);
+            
+            for (let i = 0; i < total; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'progress-dot';
+                container.appendChild(dot);
+            }
+        }
+
+        // Show complete modal
+        function showCompleteModal() {
+            document.getElementById('completeModal').classList.add('show');
+            
+            // Create celebration effect
+            createCelebration();
+        }
+
+        // Create celebration effect
+        function createCelebration() {
+            const universe = document.querySelector('.universe');
+            
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const star = document.createElement('div');
+                    star.className = 'shooting-star';
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.top = `${Math.random() * 100}%`;
+                    star.style.animationDuration = `${1 + Math.random() * 2}s`;
+                    universe.appendChild(star);
+                    
+                    setTimeout(() => star.remove(), 3000);
+                }, i * 100);
+            }
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Message modal close
+            document.getElementById('closeMessage').addEventListener('click', () => {
+                document.getElementById('messageModal').classList.remove('show');
+            });
+            
+            // Complete modal
+            document.getElementById('completeButton').addEventListener('click', () => {
+                document.getElementById('completeModal').classList.remove('show');
+                resetConstellation();
+            });
+            
+            // Navigation buttons
+            document.getElementById('resetBtn').addEventListener('click', resetConstellation);
+            document.getElementById('autoPlayBtn').addEventListener('click', toggleAutoPlay);
+            
+            // Music controls
+            document.getElementById('playPauseBtn').addEventListener('click', togglePlayPause);
+            document.getElementById('prevBtn').addEventListener('click', playPrevious);
+            document.getElementById('nextBtn').addEventListener('click', playNext);
+            
+            // Visibility change
+            document.addEventListener('visibilitychange', handleVisibilityChange);
+        }
+
+        // Reset constellation
+        function resetConstellation() {
+            app.revealedStars.clear();
+            app.autoPlaying = false;
+            
+            // Reset stars
+            document.querySelectorAll('.message-star').forEach(star => {
+                star.classList.remove('revealed');
+            });
+            
+            // Reset constellation lines
+            app.constellationLines.forEach(line => {
+                line.classList.remove('visible');
+            });
+            
+            // Reset progress
+            updateProgress();
+            
+            // Show instructions
+            document.getElementById('instructions').style.display = 'block';
+            
+            // Update auto play button
+            document.getElementById('autoPlayBtn').innerHTML = '<i class="fas fa-play"></i>';
+        }
+
+        // Toggle auto play
+        function toggleAutoPlay() {
+            app.autoPlaying = !app.autoPlaying;
+            const btn = document.getElementById('autoPlayBtn');
+            
+            if (app.autoPlaying) {
+                btn.innerHTML = '<i class="fas fa-pause"></i>';
+                autoRevealNext();
+            } else {
+                btn.innerHTML = '<i class="fas fa-play"></i>';
+            }
+        }
+
+        // Auto reveal next star
+        function autoRevealNext() {
+            if (!app.autoPlaying) return;
+            
+            const total = Math.min(letterContent.length, 20);
+            const nextIndex = Array.from({length: total}, (_, i) => i)
+                .find(i => !app.revealedStars.has(i));
+            
+            if (nextIndex !== undefined) {
+                revealMessage(nextIndex);
+                setTimeout(autoRevealNext, 3000);
+            } else {
+                app.autoPlaying = false;
+                document.getElementById('autoPlayBtn').innerHTML = '<i class="fas fa-play"></i>';
+            }
+        }
+
+        // Music functions
+        function togglePlayPause() {
+            if (!app.userInteracted) {
+                app.userInteracted = true;
+            }
+
+            if (app.isPlaying) {
+                pauseCurrentSong();
+            } else {
+                playCurrentSong();
+            }
+        }
+
+        function playCurrentSong() {
+            const audio = app.audioElements[app.currentSong];
+            
+            app.audioElements.forEach((otherAudio, index) => {
+                if (index !== app.currentSong) {
+                    otherAudio.pause();
+                    otherAudio.currentTime = 0;
+                }
+            });
+            
+            audio.src = songFiles[app.currentSong];
+            audio.play().then(() => {
+                app.isPlaying = true;
+                updateMusicUI();
+            }).catch(err => {
+                console.log('Audio play failed:', err);
+                app.isPlaying = false;
+                updateMusicUI();
+            });
+        }
+
+        function pauseCurrentSong() {
+            const audio = app.audioElements[app.currentSong];
+            if (audio) {
+                audio.pause();
+            }
+            app.isPlaying = false;
+            updateMusicUI();
+        }
+
+        function playPrevious() {
+            app.currentSong = app.currentSong === 0 ? songFiles.length - 1 : app.currentSong - 1;
+            if (app.isPlaying) playCurrentSong();
+            updateMusicUI();
+        }
+
+        function playNext() {
+            app.currentSong = (app.currentSong + 1) % songFiles.length;
+            if (app.isPlaying) playCurrentSong();
+            updateMusicUI();
+        }
+
+        function updateMusicUI() {
+            const playIcon = document.getElementById('playIcon');
+            playIcon.className = app.isPlaying ? 'fas fa-pause' : 'fas fa-play';
+            
+            document.getElementById('musicTitle').textContent = songTitles[app.currentSong];
+            document.getElementById('musicStatus').textContent = app.isPlaying ? 'Playing' : 'Paused';
+        }
+
+        function handleVisibilityChange() {
+            if (document.hidden && app.isPlaying) {
+                pauseCurrentSong();
+            }
+        }
+
+        // Setup touch optimizations
+        function setupTouchOptimizations() {
+            // Prevent double-tap zoom
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function (event) {
+                const now = Date.now();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+
+            // Add touch feedback
+            document.addEventListener('touchstart', function(e) {
+                createTouchRipple(e.touches[0].clientX, e.touches[0].clientY);
+            }, { passive: true });
+        }
+
+        // Create touch ripple
+        function createTouchRipple(x, y) {
+            const ripple = document.createElement('div');
+            ripple.className = 'touch-ripple';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            document.body.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+</body>
+</html>
