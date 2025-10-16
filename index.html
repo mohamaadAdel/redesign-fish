@@ -199,6 +199,7 @@
             width: 100%;
             max-width: 450px;
             height: 450px;
+            padding-bottom: 20px; /* Added padding */
         }
 
         /* Message emojis */
@@ -251,7 +252,7 @@
         /* Message display area */
         .message-display {
             position: absolute;
-            bottom: 80px;
+            bottom: 100px; /* Increased from 80px */
             left: 20px;
             right: 20px;
             background: rgba(26, 31, 58, 0.9);
@@ -308,6 +309,8 @@
             align-items: center;
             z-index: 100;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            min-height: 60px; /* Ensure minimum height */
+            box-sizing: border-box;
         }
 
         .nav-button {
@@ -652,8 +655,9 @@
             
             .heart-container {
                 max-width: 90vw;
-                height: 50vh;
-                max-height: 350px;
+                height: 55vh;
+                max-height: 400px;
+                padding-bottom: 30px; /* More padding on mobile */
             }
             
             .message-emoji {
@@ -665,7 +669,7 @@
             .message-display {
                 padding: 15px;
                 max-width: 90%;
-                bottom: 180px; /* Much lower position on mobile */
+                bottom: 150px; /* Increased from 120px */
             }
             
             .message-text {
@@ -734,8 +738,9 @@
             }
             
             .heart-container {
-                height: 45vh;
-                max-height: 300px;
+                height: 50vh;
+                max-height: 350px;
+                padding-bottom: 40px; /* Even more padding on small mobile */
             }
             
             .message-emoji {
@@ -746,7 +751,7 @@
             
             .message-display {
                 padding: 12px;
-                bottom: 160px; /* Even lower on smaller mobile */
+                bottom: 140px; /* Increased from 110px */
             }
             
             .message-text {
@@ -812,7 +817,7 @@
             
             .message-display {
                 padding: 10px;
-                bottom: 150px; /* Lowest position on smallest screens */
+                bottom: 130px; /* Increased from 100px */
             }
             
             .message-text {
@@ -826,8 +831,9 @@
             }
             
             .heart-container {
-                height: 40vh;
-                max-height: 250px;
+                height: 45vh;
+                max-height: 300px;
+                padding-bottom: 50px; /* Even more padding on smallest screens */
             }
             
             .music-player {
@@ -851,6 +857,13 @@
             
             .navigation {
                 padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0));
+            }
+        }
+
+        /* Additional safety margin for very small screens */
+        @media (max-height: 700px) and (max-width: 480px) {
+            .message-display {
+                bottom: 160px; /* Even higher for very small screens */
             }
         }
 
@@ -880,12 +893,17 @@
             }
             
             .heart-container {
-                height: 60vh;
-                max-height: 280px;
+                height: 65vh;
+                max-height: 300px;
             }
             
             .message-display {
-                bottom: 140px; /* Adjust for landscape */
+                bottom: 120px; /* Increased from 90px */
+                padding: 10px;
+            }
+            
+            .message-text {
+                font-size: 0.85rem;
             }
         }
 
@@ -1062,6 +1080,24 @@
             setupTouchOptimizations();
             createFloatingHearts();
             createSongDropdown();
+            adjustMessagePosition(); // Call initially
+        }
+
+        // Adjust message position dynamically
+        function adjustMessagePosition() {
+            const messageDisplay = document.getElementById('messageDisplay');
+            const heartContainer = document.getElementById('heartContainer');
+            const navigation = document.querySelector('.navigation');
+            
+            // Get the height of navigation and heart container
+            const navHeight = navigation.offsetHeight;
+            const heartHeight = heartContainer.offsetHeight;
+            
+            // Calculate safe position (above navigation with some margin)
+            const safePosition = navHeight + 30; // Increased margin
+            
+            // Set the bottom position dynamically
+            messageDisplay.style.bottom = `${safePosition}px`;
         }
 
         // Create audio elements
@@ -1482,6 +1518,9 @@
             
             // Handle window resize
             window.addEventListener('resize', handleResize);
+            
+            // Call adjustMessagePosition on resize
+            window.addEventListener('resize', adjustMessagePosition);
         }
 
         // Handle window resize
