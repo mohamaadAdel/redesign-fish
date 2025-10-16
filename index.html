@@ -42,6 +42,7 @@
             color: var(--text-light);
             overflow: hidden;
             position: relative;
+            touch-action: manipulation;
         }
 
         /* Safe area */
@@ -137,36 +138,41 @@
 
         /* Header */
         .header {
-            padding: 15px 20px;
+            padding: 12px 20px;
             text-align: center;
             background: rgba(10, 14, 39, 0.8);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 100;
+            min-height: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .title {
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(1.8rem, 5vw, 2.2rem);
+            font-size: clamp(1.5rem, 5vw, 2rem);
             font-weight: 700;
             background: linear-gradient(135deg, var(--heart-red), var(--heart-pink));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 3px;
+            margin-bottom: 2px;
             letter-spacing: 1px;
+            line-height: 1.2;
         }
 
         .subtitle {
-            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            font-size: clamp(0.7rem, 2.5vw, 0.85rem);
             color: var(--text-dim);
             font-weight: 300;
             letter-spacing: 0.5px;
         }
 
         .heart-symbol {
-            font-size: 1.4rem;
-            margin: 5px 0;
+            font-size: 1.2rem;
+            margin: 3px 0;
             color: var(--heart-red);
             animation: pulse 2s infinite;
         }
@@ -186,6 +192,7 @@
             align-items: center;
             justify-content: center;
             padding: 10px;
+            touch-action: pan-x pan-y;
         }
 
         /* Heart container */
@@ -194,24 +201,28 @@
             width: 100%;
             max-width: 450px;
             height: 450px;
+            padding-bottom: 20px;
         }
 
-        /* Message emojis */
+        /* Message emojis - MOBILE OPTIMIZED */
         .message-emoji {
             position: absolute;
-            width: 32px;
-            height: 32px;
+            width: 44px; /* Increased for better touch targets */
+            height: 44px;
             cursor: pointer;
             transition: all 0.3s ease;
             z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 50%;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 71, 87, 0.2);
+            touch-action: manipulation;
+            -webkit-user-select: none;
+            user-select: none;
         }
 
         .message-emoji.revealed {
@@ -243,23 +254,25 @@
             opacity: 1;
         }
 
-        /* Message display area */
+        /* Message display area - MOBILE OPTIMIZED */
         .message-display {
             position: absolute;
-            bottom: 80px;
-            left: 20px;
-            right: 20px;
-            background: rgba(26, 31, 58, 0.9);
+            bottom: 150px; /* Increased for mobile */
+            left: 15px;
+            right: 15px;
+            background: rgba(26, 31, 58, 0.95);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 71, 87, 0.3);
-            border-radius: 20px;
-            padding: 20px;
+            border-radius: 16px;
+            padding: 18px;
             text-align: center;
             transform: translateY(150%);
             transition: transform 0.5s ease;
             z-index: 50;
             max-width: 500px;
             margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            touch-action: manipulation;
         }
 
         .message-display.show {
@@ -281,64 +294,77 @@
             justify-content: center;
             font-weight: 600;
             font-size: 0.8rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         .message-text {
             font-size: 1rem;
             line-height: 1.5;
             color: var(--text-light);
+            padding: 5px 0;
         }
 
-        /* Navigation */
+        /* Navigation - MOBILE OPTIMIZED */
         .navigation {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(10, 14, 39, 0.9);
+            background: rgba(10, 14, 39, 0.95);
             backdrop-filter: blur(20px);
-            padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0));
+            padding: 15px 20px calc(15px + env(safe-area-inset-bottom, 0));
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            min-height: 70px;
+            box-sizing: border-box;
         }
 
         .nav-button {
             background: none;
             border: none;
             color: var(--text-dim);
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            padding: 6px;
+            padding: 10px;
+            min-width: 44px;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            touch-action: manipulation;
         }
 
         .nav-button:active {
             color: var(--heart-red);
-            transform: scale(0.9);
+            background: rgba(255, 71, 87, 0.1);
+            transform: scale(0.95);
         }
 
         .progress-indicator {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .progress-text {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-dim);
+            font-weight: 500;
         }
 
         .progress-dots {
             display: flex;
-            gap: 4px;
+            gap: 5px;
         }
 
         .progress-dot {
-            width: 6px;
-            height: 6px;
+            width: 7px;
+            height: 7px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.2);
             transition: all 0.3s ease;
@@ -349,27 +375,23 @@
             transform: scale(1.2);
         }
 
-        /* Music player - Enhanced with dropdown */
+        /* Music player - MOBILE OPTIMIZED */
         .music-player {
             position: fixed;
-            top: calc(80px + env(safe-area-inset-top, 0));
-            right: 15px;
-            background: rgba(26, 31, 58, 0.9);
+            top: calc(75px + env(safe-area-inset-top, 0));
+            right: 10px;
+            background: rgba(26, 31, 58, 0.95);
             backdrop-filter: blur(20px);
-            padding: 12px;
-            border-radius: 25px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             z-index: 150;
             border: 1px solid rgba(255, 71, 87, 0.2);
             transition: all 0.3s ease;
-        }
-
-        .music-player:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            touch-action: manipulation;
         }
 
         .music-btn {
@@ -385,6 +407,7 @@
             cursor: pointer;
             transition: all 0.2s ease;
             font-size: 0.8rem;
+            touch-action: manipulation;
         }
 
         .music-btn:active {
@@ -395,7 +418,7 @@
             display: flex;
             flex-direction: column;
             min-width: 0;
-            max-width: 120px;
+            max-width: 110px;
             position: relative;
         }
 
@@ -407,12 +430,13 @@
             overflow: hidden;
             text-overflow: ellipsis;
             cursor: pointer;
-            padding: 2px 4px;
-            border-radius: 4px;
+            padding: 5px;
+            border-radius: 5px;
             transition: background 0.2s ease;
+            touch-action: manipulation;
         }
 
-        .music-title:hover {
+        .music-title:active {
             background: rgba(255, 255, 255, 0.1);
         }
 
@@ -427,12 +451,12 @@
             top: 100%;
             right: 0;
             margin-top: 5px;
-            background: rgba(26, 31, 58, 0.95);
+            background: rgba(26, 31, 58, 0.98);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 71, 87, 0.3);
             border-radius: 12px;
-            min-width: 180px;
-            max-height: 250px;
+            min-width: 160px;
+            max-height: 200px;
             overflow-y: auto;
             z-index: 200;
             opacity: 0;
@@ -449,20 +473,22 @@
         }
 
         .song-item {
-            padding: 10px 15px;
+            padding: 10px 12px;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            min-height: 44px;
+            touch-action: manipulation;
         }
 
         .song-item:last-child {
             border-bottom: none;
         }
 
-        .song-item:hover {
+        .song-item:active {
             background: rgba(255, 71, 87, 0.1);
         }
 
@@ -500,6 +526,7 @@
             justify-content: center;
             padding: 20px;
             z-index: 300;
+            touch-action: manipulation;
         }
 
         .complete-modal.show {
@@ -515,6 +542,7 @@
         .complete-content {
             text-align: center;
             max-width: 380px;
+            width: 90%;
         }
 
         .complete-icon {
@@ -550,12 +578,14 @@
             background: linear-gradient(135deg, var(--heart-red), var(--heart-pink));
             border: none;
             color: white;
-            padding: 10px 25px;
+            padding: 12px 30px;
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 500;
+            min-height: 44px;
+            touch-action: manipulation;
         }
 
         .complete-button:active {
@@ -574,6 +604,7 @@
             z-index: 5;
             pointer-events: none;
             animation: fadeInOut 4s ease-in-out infinite;
+            padding: 0 20px;
         }
 
         @keyframes fadeInOut {
@@ -634,88 +665,51 @@
             }
         }
 
+        /* Swipe indicator for mobile */
+        .swipe-indicator {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            text-align: center;
+            z-index: 5;
+            opacity: 0.7;
+            animation: pulse 2s infinite;
+            display: none;
+        }
+
         /* Mobile optimizations */
         @media (max-width: 768px) {
+            .header {
+                padding: 10px 15px;
+                min-height: 65px;
+            }
+            
+            .title {
+                font-size: clamp(1.4rem, 6vw, 1.8rem);
+            }
+            
             .heart-container {
                 max-width: 90vw;
-                height: 60vh;
-                max-height: 450px;
+                height: 55vh;
+                max-height: 400px;
+                padding-bottom: 40px;
             }
             
             .message-emoji {
-                width: 40px;
-                height: 40px;
+                width: 44px;
+                height: 44px;
                 font-size: 1.4rem;
             }
             
             .message-display {
-                padding: 18px;
+                padding: 16px;
                 max-width: 90%;
-                bottom: 70px;
-            }
-            
-            .message-text {
-                font-size: 1.1rem;
-            }
-            
-            .music-player {
-                top: calc(70px + env(safe-area-inset-top, 0));
-                right: 10px;
-                padding: 10px;
-            }
-            
-            .music-btn {
-                width: 32px;
-                height: 32px;
-                font-size: 0.8rem;
-            }
-            
-            .navigation {
-                padding: 10px 15px calc(10px + env(safe-area-inset-bottom, 0));
-            }
-            
-            .nav-button {
-                font-size: 1.3rem;
-                padding: 8px;
-            }
-            
-            .progress-text {
-                font-size: 0.9rem;
-            }
-            
-            .progress-dot {
-                width: 8px;
-                height: 8px;
-            }
-            
-            .song-dropdown {
-                min-width: 160px;
-                max-height: 200px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .heart-container {
-                height: 55vh;
-            }
-            
-            .message-emoji {
-                width: 36px;
-                height: 36px;
-                font-size: 1.2rem;
-            }
-            
-            .title {
-                font-size: clamp(1.5rem, 6vw, 2rem);
-            }
-            
-            .subtitle {
-                font-size: clamp(0.7rem, 3vw, 0.85rem);
-            }
-            
-            .message-display {
-                padding: 15px;
-                bottom: 60px;
+                bottom: 160px;
+                left: 5%;
+                right: 5%;
             }
             
             .message-text {
@@ -723,42 +717,251 @@
             }
             
             .music-player {
-                right: 5px;
+                top: calc(68px + env(safe-area-inset-top, 0));
+                right: 8px;
+                padding: 8px;
+                gap: 6px;
+            }
+            
+            .music-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 0.75rem;
+            }
+            
+            .music-info {
+                max-width: 100px;
+            }
+            
+            .navigation {
+                padding: 12px 15px calc(12px + env(safe-area-inset-bottom, 0));
+            }
+            
+            .nav-button {
+                font-size: 1.3rem;
+                padding: 10px;
+            }
+            
+            .progress-text {
+                font-size: 0.85rem;
+            }
+            
+            .progress-dot {
+                width: 7px;
+                height: 7px;
             }
             
             .song-dropdown {
-                right: -10px;
                 min-width: 150px;
+                max-height: 180px;
+            }
+            
+            .swipe-indicator {
+                display: block;
             }
         }
 
-        @media (max-width: 320px) {
+        @media (max-width: 480px) {
+            .header {
+                padding: 8px 12px;
+                min-height: 60px;
+            }
+            
+            .title {
+                font-size: clamp(1.2rem, 7vw, 1.6rem);
+                margin-bottom: 1px;
+            }
+            
+            .subtitle {
+                font-size: clamp(0.65rem, 3.5vw, 0.75rem);
+            }
+            
+            .heart-symbol {
+                font-size: 1rem;
+                margin: 2px 0;
+            }
+            
+            .heart-container {
+                height: 50vh;
+                max-height: 350px;
+                padding-bottom: 50px;
+            }
+            
+            .message-emoji {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
             .message-display {
-                padding: 12px;
+                padding: 14px;
+                bottom: 150px;
             }
             
             .message-text {
                 font-size: 0.95rem;
             }
             
-            .message-emoji {
-                width: 32px;
-                height: 32px;
-                font-size: 1.1rem;
-            }
-            
-            .heart-container {
-                height: 50vh;
-            }
-            
             .music-player {
-                padding: 8px;
+                top: calc(62px + env(safe-area-inset-top, 0));
+                right: 5px;
+                padding: 6px;
+                gap: 5px;
             }
             
             .music-btn {
                 width: 28px;
                 height: 28px;
                 font-size: 0.7rem;
+            }
+            
+            .music-info {
+                max-width: 90px;
+            }
+            
+            .music-title {
+                font-size: 0.65rem;
+            }
+            
+            .music-status {
+                font-size: 0.55rem;
+            }
+            
+            .song-dropdown {
+                right: -5px;
+                min-width: 140px;
+            }
+            
+            .song-item {
+                padding: 8px 10px;
+            }
+            
+            .song-name {
+                font-size: 0.7rem;
+            }
+            
+            .swipe-indicator {
+                bottom: 70px;
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .header {
+                min-height: 55px;
+                padding: 6px 10px;
+            }
+            
+            .title {
+                font-size: clamp(1.1rem, 8vw, 1.4rem);
+            }
+            
+            .subtitle {
+                font-size: 0.6rem;
+            }
+            
+            .heart-symbol {
+                font-size: 0.9rem;
+            }
+            
+            .message-display {
+                padding: 12px;
+                bottom: 140px;
+            }
+            
+            .message-text {
+                font-size: 0.9rem;
+            }
+            
+            .message-emoji {
+                width: 36px;
+                height: 36px;
+                font-size: 1.1rem;
+            }
+            
+            .heart-container {
+                height: 45vh;
+                max-height: 300px;
+                padding-bottom: 60px;
+            }
+            
+            .music-player {
+                top: calc(57px + env(safe-area-inset-top, 0));
+                padding: 5px;
+            }
+            
+            .music-btn {
+                width: 26px;
+                height: 26px;
+                font-size: 0.65rem;
+            }
+            
+            .music-info {
+                max-width: 80px;
+            }
+            
+            .music-title {
+                font-size: 0.6rem;
+            }
+            
+            .navigation {
+                padding: 10px 10px calc(10px + env(safe-area-inset-bottom, 0));
+            }
+            
+            .swipe-indicator {
+                bottom: 65px;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* Additional safety margin for very small screens */
+        @media (max-height: 700px) and (max-width: 480px) {
+            .message-display {
+                bottom: 170px;
+            }
+        }
+
+        /* Landscape orientation adjustments */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .header {
+                min-height: 50px;
+                padding: 6px 15px;
+            }
+            
+            .title {
+                font-size: clamp(1.2rem, 4vw, 1.5rem);
+                margin-bottom: 0;
+            }
+            
+            .subtitle {
+                font-size: 0.65rem;
+            }
+            
+            .heart-symbol {
+                font-size: 0.9rem;
+                margin: 1px 0;
+            }
+            
+            .music-player {
+                top: calc(52px + env(safe-area-inset-top, 0));
+            }
+            
+            .heart-container {
+                height: 65vh;
+                max-height: 300px;
+            }
+            
+            .message-display {
+                bottom: 130px;
+                padding: 10px;
+            }
+            
+            .message-text {
+                font-size: 0.85rem;
+            }
+            
+            .swipe-indicator {
+                display: none;
             }
         }
 
@@ -800,6 +1003,10 @@
         <main class="constellation-map" id="constellationMap">
             <div class="instructions" id="instructions">
                 <div>💕 Tap the hearts to discover my love</div>
+            </div>
+            
+            <div class="swipe-indicator" id="swipeIndicator">
+                💕 Swipe left/right to change songs
             </div>
             
             <div class="heart-container" id="heartContainer">
@@ -870,7 +1077,6 @@
             "You make me happy.",
             "You make me to want a better version of myself😔.",
             "You love me in the times when I'm so insfurable and annoying, overwhelming",
-         
             "You forgive me quickly. even tho i did bad things for u im sorry",
             "You understand me. And when you don't, you try to and you go all in to get clarity about the things you don't understand.",
             "You respect my boundaries. and feelings",
@@ -900,7 +1106,6 @@
             "i love you.",
             "You care about my opinion and u ask my about my opinion when ur taking a decision, i know its so dumb but thank u for doing that, thank u so much i love ytou ",
             "you are who you are and that is the best thing ever ."
-        
         ];
 
         // Only use the specified emojis
@@ -922,7 +1127,9 @@
             heartLines: [],
             currentReasonIndex: 0,
             messageDisplayTimeout: null,
-            dropdownOpen: false
+            dropdownOpen: false,
+            touchStartX: 0,
+            touchStartY: 0
         };
 
         // Initialize app
@@ -935,6 +1142,24 @@
             setupTouchOptimizations();
             createFloatingHearts();
             createSongDropdown();
+            adjustMessagePosition();
+        }
+
+        // Adjust message position dynamically
+        function adjustMessagePosition() {
+            const messageDisplay = document.getElementById('messageDisplay');
+            const heartContainer = document.getElementById('heartContainer');
+            const navigation = document.querySelector('.navigation');
+            
+            // Get the height of navigation and heart container
+            const navHeight = navigation.offsetHeight;
+            const heartHeight = heartContainer.offsetHeight;
+            
+            // Calculate safe position (above navigation with some margin)
+            const safePosition = navHeight + 40;
+            
+            // Set the bottom position dynamically
+            messageDisplay.style.bottom = `${safePosition}px`;
         }
 
         // Create audio elements
@@ -1136,10 +1361,10 @@
                 const emoji = document.createElement('div');
                 emoji.className = 'message-emoji gpu-accelerated';
                 
-                // Adjust emoji size based on screen size
+                // Adjust emoji size based on screen size - MOBILE OPTIMIZED
                 const isMobile = window.innerWidth <= 768;
                 const isSmallMobile = window.innerWidth <= 480;
-                const emojiSize = isSmallMobile ? 18 : (isMobile ? 20 : 16);
+                const emojiSize = isSmallMobile ? 20 : (isMobile ? 22 : 16);
                 
                 emoji.style.left = `${point.x - emojiSize}px`;
                 emoji.style.top = `${point.y - emojiSize}px`;
@@ -1355,6 +1580,9 @@
             
             // Handle window resize
             window.addEventListener('resize', handleResize);
+            
+            // Call adjustMessagePosition on resize
+            window.addEventListener('resize', adjustMessagePosition);
         }
 
         // Handle window resize
@@ -1518,52 +1746,36 @@
             }, { passive: true });
             
             // Add swipe gesture for navigation
-            let touchStartX = 0;
-            let touchStartY = 0;
-            
             document.addEventListener('touchstart', function(e) {
-                touchStartX = e.touches[0].clientX;
-                touchStartY = e.touches[0].clientY;
+                app.touchStartX = e.touches[0].clientX;
+                app.touchStartY = e.touches[0].clientY;
             }, { passive: true });
             
             document.addEventListener('touchend', function(e) {
-                if (!touchStartX || !touchStartY) {
+                if (!app.touchStartX || !app.touchStartY) {
                     return;
                 }
                 
                 const touchEndX = e.changedTouches[0].clientX;
                 const touchEndY = e.changedTouches[0].clientY;
                 
-                const dx = touchEndX - touchStartX;
-                const dy = touchEndY - touchStartY;
+                const dx = touchEndX - app.touchStartX;
+                const dy = touchEndY - app.touchStartY;
                 
-                // Determine if swipe was horizontal or vertical
-                if (Math.abs(dx) > Math.abs(dy)) {
-                    // Horizontal swipe
-                    if (dx > 50) {
+                // Only consider horizontal swipes with minimal vertical movement
+                if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+                    if (dx > 0) {
                         // Swipe right - previous song
                         playPrevious();
-                    } else if (dx < -50) {
+                    } else {
                         // Swipe left - next song
                         playNext();
-                    }
-                } else {
-                    // Vertical swipe
-                    if (dy > 50) {
-                        // Swipe down - hide message display if visible
-                        const messageDisplay = document.getElementById('messageDisplay');
-                        if (messageDisplay.classList.contains('show')) {
-                            messageDisplay.classList.remove('show');
-                            if (app.messageDisplayTimeout) {
-                                clearTimeout(app.messageDisplayTimeout);
-                            }
-                        }
                     }
                 }
                 
                 // Reset values
-                touchStartX = 0;
-                touchStartY = 0;
+                app.touchStartX = 0;
+                app.touchStartY = 0;
             }, { passive: true });
         }
 
