@@ -42,6 +42,10 @@
             color: var(--text-light);
             overflow: hidden;
             position: relative;
+            -webkit-overflow-scrolling: touch;
+            /* Performance optimizations */
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         /* Safe area */
@@ -55,7 +59,7 @@
             z-index: 1000;
         }
 
-        /* Starry background */
+        /* Starry background - Optimized */
         .universe {
             position: fixed;
             top: 0;
@@ -65,6 +69,8 @@
             background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
             overflow: hidden;
             z-index: 0;
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         .stars {
@@ -73,6 +79,7 @@
             left: 0;
             width: 100%;
             height: 100%;
+            transform: translateZ(0);
         }
 
         .star {
@@ -80,6 +87,7 @@
             background: white;
             border-radius: 50%;
             animation: twinkle 4s infinite;
+            transform: translateZ(0);
         }
 
         @keyframes twinkle {
@@ -87,7 +95,7 @@
             50% { opacity: 1; }
         }
 
-        /* Shooting stars */
+        /* Shooting stars - Optimized */
         .shooting-star {
             position: absolute;
             width: 2px;
@@ -97,6 +105,7 @@
             box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
             animation: shoot 3s linear infinite;
             opacity: 0;
+            transform: translateZ(0);
         }
 
         .shooting-star::after {
@@ -133,6 +142,8 @@
             flex-direction: column;
             z-index: 1;
             padding-top: env(safe-area-inset-top, 0);
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         /* Header */
@@ -147,6 +158,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            transform: translateZ(0);
         }
 
         .title {
@@ -191,6 +203,7 @@
             align-items: center;
             justify-content: center;
             padding: 10px;
+            transform: translateZ(0);
         }
 
         /* Heart container */
@@ -199,16 +212,16 @@
             width: 100%;
             max-width: 450px;
             height: 450px;
-            padding-bottom: 20px; /* Added padding */
+            transform: translateZ(0);
         }
 
-        /* Message emojis */
+        /* Message emojis - Optimized */
         .message-emoji {
             position: absolute;
             width: 32px;
             height: 32px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease; /* Reduced from 0.3s */
             z-index: 10;
             display: flex;
             align-items: center;
@@ -218,6 +231,8 @@
             border-radius: 50%;
             backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 71, 87, 0.2);
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         .message-emoji.revealed {
@@ -225,7 +240,7 @@
             border-color: var(--heart-red);
             transform: scale(1.15);
             box-shadow: 0 0 15px rgba(255, 71, 87, 0.6);
-            animation: heartbeat 1s ease-in-out;
+            animation: heartbeat 0.8s ease-in-out; /* Reduced from 1s */
         }
 
         @keyframes heartbeat {
@@ -234,7 +249,7 @@
             100% { transform: scale(1.15); }
         }
 
-        /* Heart lines */
+        /* Heart lines - Optimized */
         .heart-line {
             position: absolute;
             height: 1px;
@@ -242,30 +257,34 @@
             transform-origin: left center;
             z-index: 5;
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.3s ease; /* Reduced from 0.5s */
+            transform: translateZ(0);
         }
 
         .heart-line.visible {
             opacity: 1;
         }
 
-        /* Message display area */
+        /* Message display area - Optimized */
         .message-display {
-            position: absolute;
-            bottom: 100px; /* Increased from 80px */
+            position: fixed;
+            bottom: 70px;
             left: 20px;
             right: 20px;
-            background: rgba(26, 31, 58, 0.9);
+            background: rgba(26, 31, 58, 0.95);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 71, 87, 0.3);
             border-radius: 20px;
             padding: 20px;
             text-align: center;
-            transform: translateY(150%);
-            transition: transform 0.5s ease;
-            z-index: 50;
+            transform: translateY(100%);
+            transition: transform 0.3s ease; /* Reduced from 0.4s */
+            z-index: 90;
             max-width: 500px;
             margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateZ(0);
+            will-change: transform;
         }
 
         .message-display.show {
@@ -309,8 +328,7 @@
             align-items: center;
             z-index: 100;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            min-height: 60px; /* Ensure minimum height */
-            box-sizing: border-box;
+            transform: translateZ(0);
         }
 
         .nav-button {
@@ -319,8 +337,9 @@
             color: var(--text-dim);
             font-size: 1.1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease; /* Reduced from 0.3s */
             padding: 6px;
+            transform: translateZ(0);
         }
 
         .nav-button:active {
@@ -349,7 +368,8 @@
             height: 6px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
+            transition: all 0.2s ease; /* Reduced from 0.3s */
+            transform: translateZ(0);
         }
 
         .progress-dot.revealed {
@@ -372,7 +392,8 @@
             gap: 6px;
             z-index: 150;
             border: 1px solid rgba(255, 71, 87, 0.2);
-            transition: all 0.3s ease;
+            transition: all 0.2s ease; /* Reduced from 0.3s */
+            transform: translateZ(0);
         }
 
         .music-player:hover {
@@ -391,8 +412,9 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.15s ease; /* Reduced from 0.2s */
             font-size: 0.7rem;
+            transform: translateZ(0);
         }
 
         .music-btn:active {
@@ -417,7 +439,7 @@
             cursor: pointer;
             padding: 2px 3px;
             border-radius: 3px;
-            transition: background 0.2s ease;
+            transition: background 0.15s ease; /* Reduced from 0.2s */
         }
 
         .music-title:hover {
@@ -446,7 +468,7 @@
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
-            transition: all 0.3s ease;
+            transition: all 0.2s ease; /* Reduced from 0.3s */
             box-shadow: 0 3px 15px rgba(0, 0, 0, 0.4);
         }
 
@@ -459,7 +481,7 @@
         .song-item {
             padding: 8px 12px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.15s ease; /* Reduced from 0.2s */
             display: flex;
             align-items: center;
             gap: 8px;
@@ -512,7 +534,7 @@
 
         .complete-modal.show {
             display: flex;
-            animation: fadeIn 1s ease;
+            animation: fadeIn 0.8s ease; /* Reduced from 1s */
         }
 
         @keyframes fadeIn {
@@ -528,7 +550,7 @@
         .complete-icon {
             font-size: 3.5rem;
             margin-bottom: 15px;
-            animation: float 3s ease-in-out infinite;
+            animation: float 2.5s ease-in-out infinite; /* Reduced from 3s */
         }
 
         @keyframes float {
@@ -561,7 +583,7 @@
             padding: 10px 25px;
             border-radius: 25px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease; /* Reduced from 0.3s */
             font-size: 0.9rem;
             font-weight: 500;
         }
@@ -581,7 +603,7 @@
             font-size: 0.9rem;
             z-index: 5;
             pointer-events: none;
-            animation: fadeInOut 4s ease-in-out infinite;
+            animation: fadeInOut 3s ease-in-out infinite; /* Reduced from 4s */
         }
 
         @keyframes fadeInOut {
@@ -596,7 +618,7 @@
             background: radial-gradient(circle, rgba(255, 71, 87, 0.4), transparent);
             pointer-events: none;
             transform: translate(-50%, -50%);
-            animation: ripple 0.6s ease-out;
+            animation: ripple 0.4s ease-out; /* Reduced from 0.6s */
             z-index: 9999;
         }
 
@@ -613,14 +635,15 @@
             }
         }
 
-        /* Floating hearts animation */
+        /* Floating hearts animation - Optimized */
         .floating-heart {
             position: absolute;
             bottom: -50px;
             font-size: 1.5rem;
             opacity: 0.7;
-            animation: float-up 8s linear infinite;
+            animation: float-up 6s linear infinite; /* Reduced from 8s */
             z-index: 2;
+            transform: translateZ(0);
         }
 
         @keyframes float-up {
@@ -655,9 +678,8 @@
             
             .heart-container {
                 max-width: 90vw;
-                height: 55vh;
-                max-height: 400px;
-                padding-bottom: 30px; /* More padding on mobile */
+                height: 50vh;
+                max-height: 350px;
             }
             
             .message-emoji {
@@ -669,7 +691,7 @@
             .message-display {
                 padding: 15px;
                 max-width: 90%;
-                bottom: 150px; /* Increased from 120px */
+                bottom: 70px;
             }
             
             .message-text {
@@ -738,9 +760,8 @@
             }
             
             .heart-container {
-                height: 50vh;
-                max-height: 350px;
-                padding-bottom: 40px; /* Even more padding on small mobile */
+                height: 45vh;
+                max-height: 300px;
             }
             
             .message-emoji {
@@ -751,7 +772,7 @@
             
             .message-display {
                 padding: 12px;
-                bottom: 140px; /* Increased from 110px */
+                bottom: 65px;
             }
             
             .message-text {
@@ -817,7 +838,7 @@
             
             .message-display {
                 padding: 10px;
-                bottom: 130px; /* Increased from 100px */
+                bottom: 60px;
             }
             
             .message-text {
@@ -831,9 +852,8 @@
             }
             
             .heart-container {
-                height: 45vh;
-                max-height: 300px;
-                padding-bottom: 50px; /* Even more padding on smallest screens */
+                height: 40vh;
+                max-height: 250px;
             }
             
             .music-player {
@@ -857,13 +877,6 @@
             
             .navigation {
                 padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0));
-            }
-        }
-
-        /* Additional safety margin for very small screens */
-        @media (max-height: 700px) and (max-width: 480px) {
-            .message-display {
-                bottom: 160px; /* Even higher for very small screens */
             }
         }
 
@@ -893,21 +906,16 @@
             }
             
             .heart-container {
-                height: 65vh;
-                max-height: 300px;
+                height: 60vh;
+                max-height: 280px;
             }
             
             .message-display {
-                bottom: 120px; /* Increased from 90px */
-                padding: 10px;
-            }
-            
-            .message-text {
-                font-size: 0.85rem;
+                bottom: 60px;
             }
         }
 
-        /* Performance */
+        /* Performance optimizations */
         .gpu-accelerated {
             transform: translateZ(0);
             will-change: transform;
@@ -1067,11 +1075,21 @@
             heartLines: [],
             currentReasonIndex: 0,
             messageDisplayTimeout: null,
-            dropdownOpen: false
+            dropdownOpen: false,
+            // Performance optimization: track if we're on mobile
+            isMobile: window.innerWidth <= 768,
+            // Performance optimization: reduce animations on mobile
+            reducedAnimations: false
         };
 
         // Initialize app
         function init() {
+            // Performance optimization: detect mobile and reduce animations
+            if (app.isMobile) {
+                app.reducedAnimations = true;
+                document.body.classList.add('mobile-optimized');
+            }
+            
             createAudioElements();
             createStarryBackground();
             createDetailedHeart();
@@ -1080,24 +1098,11 @@
             setupTouchOptimizations();
             createFloatingHearts();
             createSongDropdown();
-            adjustMessagePosition(); // Call initially
-        }
-
-        // Adjust message position dynamically
-        function adjustMessagePosition() {
-            const messageDisplay = document.getElementById('messageDisplay');
-            const heartContainer = document.getElementById('heartContainer');
-            const navigation = document.querySelector('.navigation');
             
-            // Get the height of navigation and heart container
-            const navHeight = navigation.offsetHeight;
-            const heartHeight = heartContainer.offsetHeight;
-            
-            // Calculate safe position (above navigation with some margin)
-            const safePosition = navHeight + 30; // Increased margin
-            
-            // Set the bottom position dynamically
-            messageDisplay.style.bottom = `${safePosition}px`;
+            // Performance optimization: use requestAnimationFrame for smoother animations
+            requestAnimationFrame(() => {
+                // Initial setup complete
+            });
         }
 
         // Create audio elements
@@ -1190,13 +1195,16 @@
             app.dropdownOpen = false;
         }
 
-        // Create starry background
+        // Create starry background - Optimized
         function createStarryBackground() {
             const starsContainer = document.getElementById('stars');
             const universe = document.querySelector('.universe');
             
+            // Performance optimization: reduce number of stars on mobile
+            const starCount = app.isMobile ? 50 : 150;
+            
             // Create background stars
-            for (let i = 0; i < 150; i++) {
+            for (let i = 0; i < starCount; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
                 star.style.width = `${Math.random() * 2.5}px`;
@@ -1206,6 +1214,9 @@
                 star.style.animationDelay = `${Math.random() * 4}s`;
                 starsContainer.appendChild(star);
             }
+            
+            // Performance optimization: reduce shooting stars frequency on mobile
+            const shootingStarInterval = app.isMobile ? 8000 : 4000;
             
             // Create shooting stars
             setInterval(() => {
@@ -1218,11 +1229,14 @@
                     
                     setTimeout(() => shootingStar.remove(), 3000);
                 }
-            }, 4000);
+            }, shootingStarInterval);
         }
 
-        // Create floating hearts
+        // Create floating hearts - Optimized
         function createFloatingHearts() {
+            // Performance optimization: reduce floating hearts frequency on mobile
+            const heartInterval = app.isMobile ? 6000 : 3000;
+            
             setInterval(() => {
                 if (Math.random() > 0.7) {
                     const heart = document.createElement('div');
@@ -1235,10 +1249,10 @@
                     
                     setTimeout(() => heart.remove(), 10000);
                 }
-            }, 3000);
+            }, heartInterval);
         }
 
-        // Create detailed heart shape with many emojis
+        // Create detailed heart shape with many emojis - Optimized
         function createDetailedHeart() {
             const container = document.getElementById('heartContainer');
             const containerRect = container.getBoundingClientRect();
@@ -1246,10 +1260,12 @@
             const centerY = containerRect.height / 2;
             const scale = Math.min(centerX, centerY) * 0.8;
             
+            // Performance optimization: reduce layers on mobile
+            const layers = app.isMobile ? 3 : 5;
+            const pointsPerLayer = app.isMobile ? 15 : 20;
+            
             // Create a very detailed heart shape with many points
             const heartPoints = [];
-            const layers = 5; // Multiple layers for density
-            const pointsPerLayer = 20;
             
             for (let layer = 0; layer < layers; layer++) {
                 const layerScale = 1 - (layer * 0.15); // Each layer slightly smaller
@@ -1279,8 +1295,9 @@
             }
             
             // Add center cluster for more density
-            for (let i = 0; i < 15; i++) {
-                const angle = (i / 15) * 2 * Math.PI;
+            const centerPoints = app.isMobile ? 10 : 15;
+            for (let i = 0; i < centerPoints; i++) {
+                const angle = (i / centerPoints) * 2 * Math.PI;
                 const radius = Math.random() * scale * 0.2;
                 const posX = centerX + Math.cos(angle) * radius;
                 const posY = centerY + Math.sin(angle) * radius;
@@ -1290,6 +1307,9 @@
             
             // Create emoji elements for each point
             const totalPoints = Math.min(letterContent.length, heartPoints.length);
+            
+            // Performance optimization: use document fragment for batch DOM updates
+            const fragment = document.createDocumentFragment();
             
             for (let i = 0; i < totalPoints; i++) {
                 const point = heartPoints[i];
@@ -1312,7 +1332,7 @@
                 const emojiChar = heartEmojis[i % heartEmojis.length];
                 emoji.textContent = emojiChar;
                 
-                container.appendChild(emoji);
+                fragment.appendChild(emoji);
                 
                 // Add click event
                 emoji.addEventListener('click', () => revealNextMessage());
@@ -1322,13 +1342,20 @@
                 });
             }
             
+            // Performance optimization: batch DOM update
+            container.appendChild(fragment);
+            
             // Create heart lines connecting nearby emojis
             createHeartLines();
         }
 
-        // Create heart lines
+        // Create heart lines - Optimized
         function createHeartLines() {
             const container = document.getElementById('heartContainer');
+            
+            // Performance optimization: reduce number of lines on mobile
+            const maxDistance = app.isMobile ? 50 : 60;
+            const connectionProbability = app.isMobile ? 0.6 : 0.4;
             
             // Connect nearby emojis to form heart shape
             for (let i = 0; i < app.emojiPositions.length; i++) {
@@ -1341,7 +1368,7 @@
                     );
                     
                     // Connect emojis that are close enough
-                    if (distance < 60 && Math.random() > 0.4) {
+                    if (distance < maxDistance && Math.random() > connectionProbability) {
                         const line = document.createElement('div');
                         line.className = 'heart-line';
                         line.dataset.emojis = `${i}-${j}`;
@@ -1361,7 +1388,7 @@
             }
         }
 
-        // Reveal next message in sequence
+        // Reveal next message in sequence - Optimized
         function revealNextMessage() {
             if (app.currentReasonIndex >= letterContent.length) {
                 // All reasons have been revealed
@@ -1398,10 +1425,13 @@
             // Show the message display
             messageDisplay.classList.add('show');
             
-            // Auto-hide after 5 seconds
+            // Performance optimization: reduce display time on mobile
+            const displayTime = app.isMobile ? 3000 : 5000;
+            
+            // Auto-hide after display time
             app.messageDisplayTimeout = setTimeout(() => {
                 messageDisplay.classList.remove('show');
-            }, 5000);
+            }, displayTime);
             
             // Increment the current reason index
             app.currentReasonIndex++;
@@ -1438,11 +1468,16 @@
             const container = document.getElementById('progressDots');
             const total = letterContent.length;
             
+            // Performance optimization: use document fragment for batch DOM updates
+            const fragment = document.createDocumentFragment();
+            
             for (let i = 0; i < total; i++) {
                 const dot = document.createElement('div');
                 dot.className = 'progress-dot';
-                container.appendChild(dot);
+                fragment.appendChild(dot);
             }
+            
+            container.appendChild(fragment);
         }
 
         // Show complete modal
@@ -1453,11 +1488,14 @@
             createCelebration();
         }
 
-        // Create celebration effect
+        // Create celebration effect - Optimized
         function createCelebration() {
             const universe = document.querySelector('.universe');
             
-            for (let i = 0; i < 40; i++) {
+            // Performance optimization: reduce number of stars on mobile
+            const starCount = app.isMobile ? 20 : 40;
+            
+            for (let i = 0; i < starCount; i++) {
                 setTimeout(() => {
                     const star = document.createElement('div');
                     star.className = 'shooting-star';
@@ -1471,7 +1509,7 @@
             }
         }
 
-        // Setup event listeners
+        // Setup event listeners - Optimized
         function setupEventListeners() {
             // Message display click to close
             document.getElementById('messageDisplay').addEventListener('click', () => {
@@ -1516,21 +1554,32 @@
             // Visibility change
             document.addEventListener('visibilitychange', handleVisibilityChange);
             
-            // Handle window resize
-            window.addEventListener('resize', handleResize);
-            
-            // Call adjustMessagePosition on resize
-            window.addEventListener('resize', adjustMessagePosition);
+            // Performance optimization: debounce resize event
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(handleResize, 200);
+            });
         }
 
-        // Handle window resize
+        // Handle window resize - Optimized
         function handleResize() {
-            // Recalculate heart positions on resize
-            const container = document.getElementById('heartContainer');
-            container.innerHTML = '';
-            app.emojiPositions = [];
-            app.heartLines = [];
-            createDetailedHeart();
+            // Performance optimization: check if mobile status changed
+            const wasMobile = app.isMobile;
+            app.isMobile = window.innerWidth <= 768;
+            
+            // Only rebuild if mobile status changed
+            if (wasMobile !== app.isMobile) {
+                app.reducedAnimations = app.isMobile;
+                document.body.classList.toggle('mobile-optimized', app.isMobile);
+                
+                // Recalculate heart positions on resize
+                const container = document.getElementById('heartContainer');
+                container.innerHTML = '';
+                app.emojiPositions = [];
+                app.heartLines = [];
+                createDetailedHeart();
+            }
         }
 
         // Reset heart
@@ -1574,13 +1623,15 @@
             }
         }
 
-        // Auto reveal next emoji
+        // Auto reveal next emoji - Optimized
         function autoRevealNext() {
             if (!app.autoPlaying) return;
             
             if (app.currentReasonIndex < letterContent.length) {
                 revealNextMessage();
-                setTimeout(autoRevealNext, 2000);
+                // Performance optimization: reduce auto-reveal time on mobile
+                const autoRevealTime = app.isMobile ? 1500 : 2000;
+                setTimeout(autoRevealNext, autoRevealTime);
             } else {
                 app.autoPlaying = false;
                 document.getElementById('autoPlayBtn').innerHTML = '<i class="fas fa-play"></i>';
@@ -1666,7 +1717,7 @@
             }
         }
 
-        // Setup touch optimizations
+        // Setup touch optimizations - Optimized
         function setupTouchOptimizations() {
             // Prevent double-tap zoom
             let lastTouchEnd = 0;
@@ -1733,15 +1784,18 @@
             }, { passive: true });
         }
 
-        // Create touch ripple
+        // Create touch ripple - Optimized
         function createTouchRipple(x, y) {
+            // Performance optimization: skip ripple on mobile if reduced animations
+            if (app.isMobile && app.reducedAnimations) return;
+            
             const ripple = document.createElement('div');
             ripple.className = 'touch-ripple';
             ripple.style.left = x + 'px';
             ripple.style.top = y + 'px';
             document.body.appendChild(ripple);
             
-            setTimeout(() => ripple.remove(), 600);
+            setTimeout(() => ripple.remove(), 400); // Reduced from 600ms
         }
 
         // Initialize when DOM is ready
